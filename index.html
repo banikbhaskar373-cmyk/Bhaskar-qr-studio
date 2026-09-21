@@ -50,7 +50,7 @@ function make(){
 var v=document.getElementById('t').value;
 document.getElementById('qr').innerHTML='';
 new QRCode(document.getElementById('qr'),{text:v,width:200,height:200});
-}
+document.getElementById('shareBtn') .onclick=function(){if(nevigator.share)nevigator.share({title:'Bhaskar Digital Studio',ur:location.href})}
 make();
 </script>
 </body>
