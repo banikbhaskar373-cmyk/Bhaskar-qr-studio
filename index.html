@@ -19,6 +19,23 @@ input{width:100%;padding:12px;border-radius:10px;border:0;margin:10px 0;box-sizi
 .logo{width:110px;height:110px;border-radius:12px;object-fit:contain;display:block;margin:10px auto}
 /* এই নতুন বক্সটা শুধু ওই লেখার জন্য */
 .cta-box{background:#ff6a00;padding:12px 15px;border-radius:12px;margin:15px 0;font-weight:bold;font-size:18px;}
+.cta-box{
+  background:linear-gradient(90deg,#ff6a00,#ff9500);
+  padding:13px 15px;
+  border-radius:12px;
+  margin:15px 0;
+  font-weight:bold;
+  font-size:19px;
+  color:#fff;
+  text-shadow:0 1px 2px rgba(0,0,0,0.3);
+  box-shadow:0 0 15px rgba(255,106,0,0.6);
+  animation:pulseGlow 1.5s infinite;
+}
+@keyframes pulseGlow{
+  0%{transform:scale(1); box-shadow:0 0 10px rgba(255,106,0,0.6);}
+  50%{transform:scale(1.04); box-shadow:0 0 25px rgba(255,106,0,1);}
+  100%{transform:scale(1); box-shadow:0 0 10px rgba(255,106,0,0.6);}
+  }
 </style>
 </head>
 <body>
