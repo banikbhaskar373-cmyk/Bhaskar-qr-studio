@@ -19,7 +19,6 @@ input{width:100%;padding:12px;border-radius:10px;border:0;margin:10px 0;box-sizi
 .logo{width:110px;height:110px;border-radius:12px;object-fit:contain;display:block;margin:10px auto}
 .cta-box{background:linear-gradient(90deg,#ff6a00,#ff9500);padding:13px 15px;border-radius:12px;margin:15px 0;font-weight:bold;font-size:19px;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.3);box-shadow:0 0 15px rgba(255,106,0,0.6);animation:pulseGlow 1.5s infinite;}
 @keyframes pulseGlow{0%{transform:scale(1); box-shadow:0 0 10px rgba(255,106,0,0.6);} 50%{transform:scale(1.04); box-shadow:0 0 25px rgba(255,106,0,1);} 100%{transform:scale(1); box-shadow:0 0 10px rgba(255,106,0,0.6);}}
-/* নতুন - চেতনার আধার বাটনের জন্য */
 .poetry-btn{background:linear-gradient(90deg,#ec4899,#8b5cf6);padding:14px;border-radius:12px;margin:15px 0;display:block;color:#fff;text-decoration:none;font-weight:bold;font-size:18px;box-shadow:0 0 15px rgba(236,72,153,0.5);}
 </style>
 </head>
@@ -34,15 +33,10 @@ input{width:100%;padding:12px;border-radius:10px;border:0;margin:10px 0;box-sizi
 <div class="card">
 <img class="logo" src="IMG_20260921_230415.jpg">
 <h2>🙏প্রিয় ডিজিটাল জগতে আপনাকে সুস্বাগতম🙏</h2>
-<p> 🖥️প্রিয় কোলকাতা ও হাওড়ার লিলুয়া শহরে 🎈ভাস্কর ডিজিটাল🎈 নিয়ে এলো এক নতুন ভাবনার QR দোকানের অভিনব সম্ভার</p>
-<p>তোমার নতুন ভাবনার সাথে সামিল হতে আর নবযুগের দ্রুত কারিগরির জগতে তালে তাল মিলিয়ে হাঁটা নয় বরং দৌড় শেখাতে বদ্ধপরিকর❤️♥️🙏🙏</p>
-
-<!-- নতুন যোগ করা হলো - আপনার কবিতার সাইটের লিংক -->
+<p>চেতনার আধার আর QR স্টুডিও - দুই বোন একসাথে</p>
 <a class="poetry-btn" href="https://banikbhaskar373-cmyk.github.io/chetonar-adhar/" target="_blank">📚 আমার কবিতা - চেতনার আধার পড়ুন ♥️</a>
-
 <div class="cta-box">👇 ক্লিক,কল বা হোয়াটস অ্যাপ করুন 👇</div>
-
-<input id="t" type="text" value="https://banikbhaskar373-cmyk.github.io/chetonar-adhar/">
+<input id="t" type="text" value="https://banikbhaskar373-cmyk.github.io/Bhaskar-qr-studio/" oninput="make()" placeholder="এখানে লিঙ্ক লিখুন...">
 <button class="btn" onclick="make()">✨ QR বানান</button>
 <div id="qr"></div>
 <div class="grid">
@@ -50,7 +44,7 @@ input{width:100%;padding:12px;border-radius:10px;border:0;margin:10px 0;box-sizi
 <a class="a" style="background:#22c55e" href="tel:+919433209439">📞 কল 2</a>
 <a class="a" style="background:#25D366" href="https://wa.me/919433209439">💬 WhatsApp</a>
 <a class="a" style="background:#f59e0b" href="mailto:banikbhaskar373@gmail.com">📧 Email</a>
-<a class="a" style="background:#38bdf8;color:#000" href="#" onclick="var u='https://banikbhaskar373-cmyk.github.io/Bhaskar-qr-studio/?v=3'; if(navigator.share){navigator.share({title:'♥️ভাস্কর ডিজিটাল স্টুডিও♥️',text:'আমার দোকানে আসুন',url:u})}else{window.open('https://wa.me/?text='+encodeURIComponent('♥️ভাস্কর ডিজিটাল স্টুডিও♥️ '+u),'_blank')} return false;">📤 শেয়ার</a>
+<a class="a" style="background:#38bdf8;color:#000" href="#" onclick="var u='https://banikbhaskar373-cmyk.github.io/Bhaskar-qr-studio/'; if(navigator.share){navigator.share({title:'♥️ভাস্কর ডিজিটাল স্টুডিও♥️',text:'আমার দোকানে আসুন',url:u})}else{window.open('https://wa.me/?text='+encodeURIComponent('♥️ভাস্কর ডিজিটাল স্টুডিও♥️ '+u),'_blank')} return false;">📤 শেয়ার</a>
 <a class="a" style="background:#ef4444" href="https://maps.app.goo.gl/dJrXf6unBqNAvzjR9?g_st=aw" target="_blank">📍 লোকেশন</a>
 </div>
 </div>
@@ -58,9 +52,10 @@ input{width:100%;padding:12px;border-radius:10px;border:0;margin:10px 0;box-sizi
 <script>
 function make(){
 var box=document.getElementById('qr');
-var v=document.getElementById('t').value;
+var v=document.getElementById('t').value.trim();
+if(!v) return;
 box.innerHTML="";
-new QRCode(box,{text:v,width:160,height:160});
+new QRCode(box,{text:v,width:180,height:180});
 }
 make();
 </script>
