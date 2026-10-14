@@ -2,62 +2,54 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>♥️ভাস্কর ডিজিটাল স্টুডিও♥️</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bhaskar Digital Studio - QR দোকান</title>
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 <style>
-body{background:#0f172a;color:#fff;font-family:system-ui;text-align:center;padding:15px;margin:0}
-.box{max-width:420px;margin:0 auto}
-.card{background:#1e293b;padding:20px;border-radius:20px;max-width:380px;margin:20px auto}
-input{width:100%;padding:12px;border-radius:10px;border:0;margin:10px 0;box-sizing:border-box}
-.btn{width:100%;padding:12px;background:#38bdf8;border:0;border-radius:10px;font-weight:bold;cursor:pointer}
-#qr{background:#fff;padding:15px;border-radius:15px;margin:15px auto;display:flex;justify-content:center;min-height:180px;align-items:center}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px}
-.a{padding:12px;border-radius:10px;color:#fff;text-decoration:none;font-weight:bold;display:block;text-align:center}
-.hero{width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;margin:0 auto;}
-.pro{width:170px !important;height:170px !important;border-radius:50% !important;object-fit:cover !important;object-position:50% 10% !important;display:block !important;margin:20px auto !important;border:4px solid #38bdf8 !important;box-shadow:0 0 30px rgba(56,189,248,0.6) !important;}
-.logo{width:110px;height:110px;border-radius:12px;object-fit:contain;display:block;margin:10px auto}
-.cta-box{background:linear-gradient(90deg,#ff6a00,#ff9500);padding:13px 15px;border-radius:12px;margin:15px 0;font-weight:bold;font-size:19px;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.3);box-shadow:0 0 15px rgba(255,106,0,0.6);animation:pulseGlow 1.5s infinite;}
-@keyframes pulseGlow{0%{transform:scale(1); box-shadow:0 0 10px rgba(255,106,0,0.6);} 50%{transform:scale(1.04); box-shadow:0 0 25px rgba(255,106,0,1);} 100%{transform:scale(1); box-shadow:0 0 10px rgba(255,106,0,0.6);}}
-.poetry-btn{background:linear-gradient(90deg,#ec4899,#8b5cf6);padding:14px;border-radius:12px;margin:15px 0;display:block;color:#fff;text-decoration:none;font-weight:bold;font-size:18px;box-shadow:0 0 15px rgba(236,72,153,0.5);}
+body{font-family:sans-serif; background: radial-gradient(circle at top,#fff7e6,#ffe0a3); margin:0; padding:20px; text-align:center;}
+.card{max-width:480px; margin:20px auto; background:white; border-radius:24px; padding:22px; box-shadow:0 10px 30px rgba(0,0,0,.15);}
+h1{margin:5px 0; color:#6d4c00;}
+input{width:90%; padding:14px; border-radius:30px; border:2px solid #ffb300; font-size:16px; text-align:center;}
+.btn{width:100%; padding:14px; border:none; border-radius:30px; margin:8px 0; font-weight:bold; color:white; font-size:16px; cursor:pointer; display:block; text-decoration:none;}
+.qr-box{margin:18px auto; padding:15px; background:#fffbe6; border-radius:18px; min-height:220px; display:flex; justify-content:center; align-items:center;}
+.a-github{background:linear-gradient(90deg,#24292e,#000);}
+.a-blogger{background:linear-gradient(90deg,#ff5722,#ff9800);}
+.a-qr{background:linear-gradient(90deg,#3b82f6,#06b6d4);}
 </style>
 </head>
 <body>
-<div class="box">
-<div class="hero">
-<img class="pro" src="IMG-20260923-WA3151.jpg">
-<h2>♥️ভাস্কর ডিজিটাল♥️ ♥️স্টুডিও♥️</h2>
-<p>📍 কলকাতা, হাওড়া, লিলুয়া 711204</p>
-<p>📞 9674131894 💬9433209439</p>
-</div>
 <div class="card">
-<img class="logo" src="IMG_20260921_230415.jpg">
-<h2>🙏প্রিয় ডিজিটাল জগতে আপনাকে সুস্বাগতম🙏</h2>
-<p>চেতনার আধার আর QR স্টুডিও - দুই বোন একসাথে</p>
-<a class="poetry-btn" href="https://banikbhaskar373-cmyk.github.io/chetonar-adhar/" target="_blank">📚 আমার কবিতা - চেতনার আধার পড়ুন ♥️</a>
-<div class="cta-box">👇 ক্লিক,কল বা হোয়াটস অ্যাপ করুন 👇</div>
-<input id="t" type="text" value="https://banikbhaskar373-cmyk.github.io/Bhaskar-qr-studio/" oninput="make()" placeholder="এখানে লিঙ্ক লিখুন...">
-<button class="btn" onclick="make()">✨ QR বানান</button>
-<div id="qr"></div>
-<div class="grid">
-<a class="a" style="background:#22c55e" href="tel:+919674131894">📞 কল 1</a>
-<a class="a" style="background:#22c55e" href="tel:+919433209439">📞 কল 2</a>
-<a class="a" style="background:#25D366" href="https://wa.me/919433209439">💬 WhatsApp</a>
-<a class="a" style="background:#f59e0b" href="mailto:banikbhaskar373@gmail.com">📧 Email</a>
-<a class="a" style="background:#38bdf8;color:#000" href="#" onclick="var u='https://banikbhaskar373-cmyk.github.io/Bhaskar-qr-studio/'; if(navigator.share){navigator.share({title:'♥️ভাস্কর ডিজিটাল স্টুডিও♥️',text:'আমার দোকানে আসুন',url:u})}else{window.open('https://wa.me/?text='+encodeURIComponent('♥️ভাস্কর ডিজিটাল স্টুডিও♥️ '+u),'_blank')} return false;">📤 শেয়ার</a>
-<a class="a" style="background:#ef4444" href="https://maps.app.goo.gl/dJrXf6unBqNAvzjR9?g_st=aw" target="_blank">📍 লোকেশন</a>
-</div>
-</div>
+<h1>🪔 ভাস্কর ডিজিটাল স্টুডিও 🪔</h1>
+<p>❤️ বিবেকের আলোক দর্শন ❤️</p>
+<p style="font-weight:bold;">ওয়েবসাইটের ঠিকানা লিখলেই QR</p>
+<input id="urlInput" type="text" placeholder="যেমন: chetonaradhar373.blogspot.com" oninput="makeQR()">
+<div id="qrcode" class="qr-box"></div>
+<button class="btn" style="background:#ffb300;color:#5a3d00;" onclick="downloadQR()">⬇️ QR ডাউনলোড করুন</button>
+
+<a class="btn a-github" href="https://banikbhaskar373-cmyk.github.io/chetonar-adhar/" target="_blank">📖 চেতনার আধার (GitHub)</a>
+<a class="btn a-blogger" href="https://chetonaradhar373.blogspot.com" target="_blank">📝 চেতনার আধার (Blogger)</a>
+<a class="btn a-qr" href="https://banikbhaskar373-cmyk.github.io/Bhaskar-qr-studio/" target="_blank">🌐 QR স্টুডিও</a>
+
+<p style="font-size:13px; color:#8a6d3b;">এক ঠিকানা লিখলেই QR - এই হলো আসল জাদু!</p>
 </div>
 <script>
-function make(){
-var box=document.getElementById('qr');
-var v=document.getElementById('t').value.trim();
-if(!v) return;
-box.innerHTML="";
-new QRCode(box,{text:v,width:180,height:180});
+let qr;
+function makeQR(){
+ let url = document.getElementById('urlInput').value.trim();
+ if(!url) return;
+ if(!url.startsWith('http')) url = 'https://' + url;
+ document.getElementById('qrcode').innerHTML='';
+ qr = new QRCode(document.getElementById('qrcode'), {text: url, width:200, height:200});
 }
-make();
+function downloadQR(){
+ let canvas = document.querySelector('#qrcode canvas');
+ if(!canvas){ alert('আগে ঠিকানা লিখুন গুরুদেব!'); return;}
+ let link = document.createElement('a');
+ link.download = 'Bhaskar-QR.png';
+ link.href = canvas.toDataURL();
+ link.click();
+}
+window.onload = ()=>{ document.getElementById('urlInput').value='chetonaradhar373.blogspot.com'; makeQR(); }
 </script>
 </body>
 </html>
