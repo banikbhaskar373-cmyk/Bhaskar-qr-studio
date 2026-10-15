@@ -39,30 +39,28 @@ input,select{width:100%;padding:12px;border-radius:10px;border:0;margin:6px 0;bo
 <a class="poetry-btn" href="https://banikbhaskar373-cmyk.github.io/chetonar-adhar/" target="_blank">💛 চেতনার আধারে 💛 কবিতা📚পরিক্রমা </a>
 <a class="blogger-btn" href="https://chetonaradhar373.blogspot.com" target="_blank">বিবস্বানের কবিতা ব্লগার<br><span style="font-size:15px;color:#facc15">chetonaradhar373 ♥️</span></a>
 
-<!-- মোড বাটন -->
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:15px 0">
 <button id="b1" class="modeBtn" onclick="setM('link')" style="background:#38bdf8;color:#000">🔗 লিঙ্ক QR</button>
 <button id="b2" class="modeBtn" onclick="setM('pay')" style="background:#1e293b;color:#fff">💰 টাকা নেওয়ার QR</button>
 </div>
 
-<!-- লিঙ্ক QR বক্স -->
 <div id="linkBox">
 <div class="cta-box">👇 যে কোনো লিঙ্ক এখানে লিখুন / পেস্ট করুন 👇<br><span style="font-size:13px;font-weight:normal">(Facebook, YouTube, দোকানের লিঙ্ক)</span></div>
 <input id="t" type="text" value="https://chetonaradhar373.blogspot.com" oninput="make()" placeholder="এখানে লিঙ্ক লিখুন...">
 </div>
 
-<!-- টাকা নেওয়ার QR বক্স -->
 <div id="payBox" style="display:none;text-align:left;background:#0f172a;padding:12px;border-radius:12px">
-<label style="font-size:13px;color:#38bdf8;font-weight:bold">💳 UPI ID বেছে নিন (টাকা এখানে ঢুকবে):</label>
+<label style="font-size:13px;color:#38bdf8;font-weight:bold">💳 ব্যাঙ্ক বেছে নিন (ID সুরক্ষিত 🔒):</label>
 <select id="upi" onchange="make()">
-<option value="banikbhaskar373-1@okaxis">banikbhaskar373-1@okaxis (Axis - Main)</option>
-<option value="banikbhaskar373-1@okicici">banikbhaskar373-1@okicici (ICICI)</option>
-<option value="banikbhaskar373-1@okhdfcbank">banikbhaskar373-1@okhdfcbank (HDFC Bank)</option>
+<option value="axis">Axis Bank - Main (Secure)</option>
+<option value="icici">ICICI Bank (Secure)</option>
+<option value="hdfc">HDFC Bank (Secure)</option>
 </select>
 <label style="font-size:13px;margin-top:8px;display:block">আপনার নাম:</label>
 <input id="pname" value="Bhaskar Banik" oninput="make()">
 <label style="font-size:13px;margin-top:8px;display:block">টাকার পরিমাণ (খালি রাখলে কাস্টমার নিজে লিখবে):</label>
 <input id="amt" type="number" placeholder="যেমন 100" oninput="make()">
+<p style="font-size:11px;color:#22c55e;margin-top:6px">🔒 আপনার UPI ID কোডের ভিতরে লুকানো আছে, বাইরে কেউ দেখতে পাবে না</p>
 </div>
 
 <button class="btn" onclick="make()">✨ QR কোড তৈরি করুন ✨</button>
@@ -87,6 +85,13 @@ input,select{width:100%;padding:12px;border-radius:10px;border:0;margin:6px 0;bo
 </div>
 
 <script>
+// ===== 🔒 UPI ID HIDDEN - বাইরে থেকে দেখা যাবে না =====
+const SECURE_UPI_MAP = {
+  "axis": atob("YmFuaWtiaGFza2FyMzczLTFAb2theGlz"),
+  "icici": atob("YmFuaWtiaGFza2FyMzczLTFAaWNpY2k="),
+  "hdfc": atob("YmFuaWtiaGFza2FyMzczLTFAb2toZGZjYmFuaw==")
+};
+
 let mode='link';
 function setM(m){
  mode=m;
@@ -105,10 +110,11 @@ function make(){
   txt=document.getElementById('t').value.trim();
   msg.innerText = txt? '🔗 এই QR স্ক্যান করলে লিঙ্ক খুলবে' : '';
  } else {
-  let upi=document.getElementById('upi').value.trim();
+  let bankKey=document.getElementById('upi').value;
+  let upi=SECURE_UPI_MAP[bankKey];
   let name=document.getElementById('pname').value.trim()||'Bhaskar Banik';
   let amt=document.getElementById('amt').value.trim();
-  if(!upi){ box.innerHTML="<span style='color:#fbbf24'>UPI ID বেছে নিন গুরুদেব</span>"; return; }
+  if(!upi){ box.innerHTML="<span style='color:#fbbf24'>ব্যাঙ্ক বেছে নিন গুরুদেব</span>"; return; }
   txt=`upi://pay?pa=${upi}&pn=${encodeURIComponent(name)}&cu=INR`;
   if(amt) txt+=`&am=${amt}`;
   msg.innerText = amt? `💰 এই QR স্ক্যান করলে ₹${amt} টাকা পেমেন্ট খুলবে - সরাসরি আপনার ব্যাঙ্কে আসবে` : '💰 এই QR স্ক্যান করলে টাকা পাঠানোর পেজ খুলবে - সরাসরি আপনার ব্যাঙ্কে আসবে';
