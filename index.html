@@ -11,19 +11,19 @@ body{background:#0f172a;color:#fff;font-family:system-ui;text-align:center;paddi
 .card{background:#1e293b;padding:20px;border-radius:20px;max-width:380px;margin:20px auto}
 input{width:100%;padding:12px;border-radius:10px;border:0;margin:10px 0;box-sizing:border-box;font-size:15px}
 .btn{width:100%;padding:12px;background:#38bdf8;border:0;border-radius:10px;font-weight:bold;cursor:pointer;font-size:15px}
-#qr{background:#ffffff!important;padding:20px!important;border-radius:15px;margin:15px auto;display:flex;justify-content:center;align-items:center;min-height:220px;border:4px solid #fff}
-#qr canvas, #qr img{border:10px solid #fff!important;background:#fff!important;display:block}
+#qr{background:#ffffff!important;padding:22px!important;border-radius:16px;margin:16px auto;display:flex;justify-content:center;align-items:center;min-height:240px;border:5px solid #fff;box-sizing:border-box}
+#qr canvas,#qr img{border:8px solid #fff;background:#fff;display:block}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px}
 .a{padding:12px;border-radius:10px;color:#fff;text-decoration:none;font-weight:bold;display:block;text-align:center}
 .hero{width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;margin:0 auto;}
 .pro{width:170px!important;height:170px!important;border-radius:50%!important;object-fit:cover!important;object-position:50% 10%!important;display:block!important;margin:20px auto!important;border:4px solid #38bdf8!important;box-shadow:0 0 30px rgba(56,189,248,0.6)!important;}
 .logo{width:110px;height:110px;border-radius:12px;object-fit:contain;display:block;margin:10px auto}
 .cta-box{background:linear-gradient(90deg,#ff6a00,#ff9500);padding:13px 15px;border-radius:12px;margin:15px 0;font-weight:bold;font-size:19px;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.3);box-shadow:0 0 15px rgba(255,106,0,0.6);animation:pulseGlow 1.5s infinite;}
-@keyframes pulseGlow{0%{transform:scale(1); box-shadow:0 0 10px rgba(255,106,0,0.6);} 50%{transform:scale(1.04); box-shadow:0 0 25px rgba(255,106,0,1);} 100%{transform:scale(1); box-shadow:0 0 10px rgba(255,106,0,0.6);}}
-.poetry-btn{background:linear-gradient(90deg,#ec4899,#8b5cf6);padding:14px;border-radius:12px;margin:12px 0;display:block;color:#fff;text-decoration:none;font-weight:bold;font-size:18px;box-shadow:0 0 15px rgba(236,72,153,0.5);}
-.blogger-btn{background:linear-gradient(90deg,#06b6d4,#3b82f6);padding:14px;border-radius:12px;margin:12px 0;display:block;color:#fff;text-decoration:none;font-weight:bold;font-size:18px;box-shadow:0 0 15px rgba(6,182,214,0.5);}
+@keyframes pulseGlow{0%{transform:scale(1)}50%{transform:scale(1.04)}100%{transform:scale(1)}}
+.poetry-btn{background:linear-gradient(90deg,#ec4899,#8b5cf6);padding:14px;border-radius:12px;margin:12px 0;display:block;color:#fff;text-decoration:none;font-weight:bold;font-size:18px}
+.blogger-btn{background:linear-gradient(90deg,#06b6d4,#3b82f6);padding:14px;border-radius:12px;margin:12px 0;display:block;color:#fff;text-decoration:none;font-weight:bold;font-size:18px}
 .print-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:14px 0}
-.print-btn{padding:11px;border-radius:10px;border:0;font-weight:800;cursor:pointer;font-size:13px;color:#fff}
+.print-btn{padding:12px;border-radius:10px;border:0;font-weight:800;cursor:pointer;font-size:13px;color:#fff}
 </style>
 </head>
 <body>
@@ -72,8 +72,9 @@ input{width:100%;padding:12px;border-radius:10px;border:0;margin:10px 0;box-sizi
 function make(){
   var box=document.getElementById('qr');
   var v=document.getElementById('t').value.trim();
-  if(!v){ box.innerHTML="<p style='color:#000'>লিঙ্ক লিখুন</p>"; return; }
+  if(!v){ box.innerHTML="<p style='color:#000'>লিঙ্ক লিখুন গুরুদেব</p>"; return; }
   box.innerHTML="";
+  // L লেভেল + 240px + সাদা বর্ডার = ১০০% স্ক্যান
   new QRCode(box,{
     text:v,
     width:240,
@@ -88,50 +89,36 @@ function downloadQR(){
   let c=document.querySelector('#qr canvas');
   let i=document.querySelector('#qr img');
   if(!c &&!i){ alert('আগে QR বানান গুরুদেব'); return; }
-  let url = c? c.toDataURL('image/png') : i.src;
+  let url=c?c.toDataURL('image/png'):i.src;
   let a=document.createElement('a');
-  a.href=url;
-  a.download='Bhaskar-QR-'+Date.now()+'.png';
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
+  a.href=url; a.download='Bhaskar-QR-'+Date.now()+'.png';
+  document.body.appendChild(a); a.click(); a.remove();
 }
 
 function printQR(){
   let c=document.querySelector('#qr canvas');
   let i=document.querySelector('#qr img');
   if(!c &&!i){ alert('আগে QR বানান'); return; }
-  let src = c? c.toDataURL() : i.src;
+  let src=c?c.toDataURL():i.src;
   let link=document.getElementById('t').value;
-  let w=window.open('','','width=700,height=750');
-  w.document.write('<html><head><title>QR Print - Bhaskar</title><style>body{font-family:system-ui;text-align:center;padding:20px}.box{border:3px dashed #000;padding:15px;display:inline-block} img{width:340px;height:340px}</style></head><body>');
-  w.document.write('<div class="box"><h2>💛 ভাস্কর ডিজিটাল স্টুডিও 💛</h2><img src="'+src+'"><br><p style="word-break:break-all;font-size:13px;margin-top:10px">'+link+'</p><p>📍 কলকাতা, হাওড়া, লিলুয়া | 📞 9674131894</p></div>');
-  w.document.write('</body></html>');
-  w.document.close();
-  w.focus();
-  setTimeout(()=>w.print(), 600);
+  let w=window.open('','','width=700,height=800');
+  w.document.write('<html><head><title>QR Print</title></head><body style="text-align:center;font-family:system-ui;padding:20px">');
+  w.document.write('<h2>💛 ভাস্কর ডিজিটাল স্টুডিও 💛</h2>');
+  w.document.write('<div style="display:inline-block;background:#fff;padding:20px;border:3px dashed #000;border-radius:16px"><img src="'+src+'" style="width:340px;height:340px"><br><br><p style="word-break:break-all;font-size:13px">'+link+'</p></div>');
+  w.document.write('<p>📍 কলকাতা, হাওড়া, লিলুয়া | 📞 9674131894</p>');
+  w.document.write('</body></html>'); w.document.close(); w.focus();
+  setTimeout(()=>w.print(),600);
 }
 
 function shareQR(){
   let v=document.getElementById('t').value.trim();
   if(!v) return;
-  let c=document.querySelector('#qr canvas');
-  if(c && navigator.canShare){
-    c.toBlob(blob=>{
-      let file=new File([blob], 'Bhaskar-QR.png', {type:'image/png'});
-      if(navigator.canShare({files:[file]})){
-        navigator.share({title:'ভাস্কর ডিজিটাল স্টুডিও', text:'আমার সাইট: '+v, files:[file]}).catch(()=>doTextShare(v));
-      } else { doTextShare(v); }
-    });
-  } else { doTextShare(v); }
-}
-function doTextShare(v){
   if(navigator.share){
-    navigator.share({title:'♥️ভাস্কর ডিজিটাল স্টুডিও♥️', text:'আমার দোকানে আসুন', url:v}).catch(()=>{
-      window.open('https://wa.me/?text='+encodeURIComponent('♥️ভাস্কর ডিজিটাল স্টুডিও♥️ '+v),'_blank');
+    navigator.share({title:'♥️ ভাস্কর ডিজিটাল স্টুডিও ♥️',text:'আমার সাইট দেখুন',url:v}).catch(()=>{
+      window.open('https://wa.me/?text='+encodeURIComponent('♥️ ভাস্কর ডিজিটাল স্টুডিও ♥️ '+v),'_blank');
     });
   } else {
-    window.open('https://wa.me/?text='+encodeURIComponent('♥️ভাস্কর ডিজিটাল স্টুডিও♥️ '+v),'_blank');
+    window.open('https://wa.me/?text='+encodeURIComponent('♥️ ভাস্কর ডিজিটাল স্টুডিও ♥️ '+v),'_blank');
   }
 }
 make();
