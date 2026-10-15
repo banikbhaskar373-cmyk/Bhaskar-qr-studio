@@ -102,14 +102,25 @@ function printQR(){
   let src=wq.toDataURL();
   let link=document.getElementById('t').value;
   let w=window.open('','','width=800,height=900');
-  w.document.write('<html><body style="text-align:center;font-family:system-ui;padding:30px"><h2>💛 ভাস্কর ডিজিটাল স্টুডিও 💛</h2><img src="'+src+'" style="width:400px;height:400px"><p style="word-break:break-all">'+link+'</p><p>📍 কলকাতা, হাওড়া, লিলুয়া 711204 | 📞 9674131894</p></body></html>');
+  w.document.write('<html><body style="text-align:center;font-family:system-ui;padding:30px"><h2>💛 ভাস্কর ডিজিটাল 💛</h2><img src="'+src+'" style="width:400px;height:400px"><p>'+link+'</p></body></html>');
   w.document.close(); w.focus();
   setTimeout(()=>w.print(),600);
 }
 function shareQR(){
-  var u=document.getElementById('t').value;
-  if(navigator.share){navigator.share({title:'♥️ভাস্কর ডিজিটাল স্টুডিও♥️',text:'আমার দোকানে আসুন',url:u})}
-  else{window.open('https://wa.me/?text='+encodeURIComponent('♥️ভাস্কর ডিজিটাল স্টুডিও♥️ '+u),'_blank')}
+  let wq=getWhiteQR();
+  if(!wq){ alert('আগে QR বানান গুরুদেব'); return; }
+  let link=document.getElementById('t').value.trim();
+  wq.toBlob(function(blob){
+    let file=new File([blob], "Bhaskar-QR.png", {type:"image/png"});
+    if(navigator.canShare && navigator.canShare({files:[file]})){
+      navigator.share({title:'ভাস্কর ডিজিটাল',text:'আমার QR - '+link,files:[file]});
+    } else {
+      // সাপোর্ট না করলে ডাউনলোড করিয়ে দিন
+      let a=document.createElement('a');
+      a.href=wq.toDataURL(); a.download='Bhaskar-QR.png'; a.click();
+      alert('ডাউনলোড হলো গুরুদেব, এবার গ্যালারি থেকে শেয়ার করুন 🙏');
+    }
+  },"image/png");
 }
 make();
 </script>
