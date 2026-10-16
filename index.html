@@ -18,43 +18,61 @@ input,select{width:100%;padding:12px;border-radius:10px;border:0;margin:6px 0;bo
 .pro{width:170px!important;height:170px!important;border-radius:50%!important;object-fit:cover!important;object-position:50% 10%!important;display:block!important;margin:20px auto!important;border:4px solid #38bdf8!important;box-shadow:0 0 30px rgba(56,189,248,0.6)!important;}
 .logo{width:110px;height:110px;border-radius:12px;object-fit:contain;display:block;margin:10px auto}
 
-/* ===== হলুদ ব্লক - নতুন হাইলাইট ডিজাইন ===== */
+/* ===== ছবির মতন হলুদ ব্লক - FINAL ===== */
 .cta-box{
-  background:linear-gradient(90deg,#fef08a,#facc15);
+  background:#fde047;
+  background:linear-gradient(135deg,#fde047 0%,#facc15 100%);
   color:#000;
-  border:3px solid #000;
-  padding:16px;
-  border-radius:18px;
+  border:none;
+  padding:20px;
+  border-radius:20px;
   margin:15px 0;
-  font-weight:bold;
-  font-size:17px;
-  transition:all 0.4s ease;
-  box-shadow:0 0 0 3px #fef08a;
+  font-weight:900;
+  text-align:left;
+  box-shadow:0 0 0 2px #fde047, 0 0 25px rgba(250,204,21,0.6), 0 0 60px rgba(250,204,21,0.25);
+  transition:all 0.3s ease;
 }
-.cta-box.active{
-  background:linear-gradient(90deg,#fde047,#facc15)!important;
-  border:3px solid #000!important;
-  box-shadow:0 0 0 6px #fef08a, 0 0 35px #facc15, 0 0 60px #fde047!important;
-  transform:scale(1.03);
-  animation: yellowPulse 1.2s infinite;
+.cta-top{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:14px;
 }
-@keyframes yellowPulse{
-  0%{box-shadow:0 0 0 4px #fef08a, 0 0 15px #facc15;}
-  50%{box-shadow:0 0 0 10px #fef9c3, 0 0 45px #facc15, 0 0 70px #fde047;}
-  100%{box-shadow:0 0 0 4px #fef08a, 0 0 15px #facc15;}
+.cta-icon{
+  width:42px;height:42px;
+  background:rgba(0,0,0,0.1);
+  border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:24px;
+  flex-shrink:0;
+}
+.cta-text{
+  font-size:19px;line-height:1.25;font-weight:900;
 }
 .cta-box input{
-  background:#fffde7!important;
+  width:100%!important;
+  background:#fffbeb!important;
   border:2.5px solid #000!important;
-  font-weight:bold!important;
-  text-align:center!important;
-  margin-top:12px!important;
+  border-radius:12px!important;
+  padding:13px 14px!important;
+  font-weight:700!important;
   font-size:14px!important;
+  color:#000!important;
+  text-align:left!important;
+  margin:0!important;
+  box-shadow:none!important;
 }
-.cta-box.active input{
-  background:#ffffff!important;
-  box-shadow:0 0 15px rgba(0,0,0,0.2) inset!important;
+.cta-box input::placeholder{color:#000;opacity:0.6}
+.cta-box.active{
+  transform:scale(1.02);
+  box-shadow:0 0 0 5px #fef9c3, 0 0 35px #facc15, 0 0 70px rgba(250,204,21,0.6)!important;
+  animation: yellowPulse 1.5s infinite;
 }
+@keyframes yellowPulse{
+  0%,100%{box-shadow:0 0 0 3px #fde047, 0 0 25px rgba(250,204,21,0.6)}
+  50%{box-shadow:0 0 0 8px #fef9c3, 0 0 45px rgba(250,204,21,0.9), 0 0 80px rgba(250,204,21,0.5)}
+}
+.cta-box.active input{background:#ffffff!important}
 
 .poetry-btn{background:linear-gradient(90deg,#ec4899,#8b5cf6);padding:14px;border-radius:12px;margin:12px 0;display:block;color:#fff;text-decoration:none;font-weight:bold;font-size:18px}
 .blogger-btn{background:linear-gradient(90deg,#06b6d4,#3b82f6);padding:14px;border-radius:12px;margin:12px 0;display:block;color:#fff;text-decoration:none;font-weight:bold;font-size:18px}
@@ -84,9 +102,13 @@ input,select{width:100%;padding:12px;border-radius:10px;border:0;margin:6px 0;bo
 
 <div id="linkBox">
 <div id="yellowBlock" class="cta-box">
-  <div>👇 যে কোনো লিঙ্ক এখানে লিখুন / পেস্ট করুন 👇<br><span style="font-size:13px;font-weight:normal">(Facebook, YouTube, দোকানের লিঙ্ক)</span></div>
+  <div class="cta-top">
+    <div class="cta-icon">🔗</div>
+    <div class="cta-text">যে কোনো লিঙ্ক এখানে<br>লিখুন / পেস্ট করুন</div>
+  </div>
   <input id="t" type="text" value="https://chetonaradhar373.blogspot.com" placeholder="https://your-link-here.com">
 </div>
+<p style="font-size:12px;color:#cbd5e1;margin:-5px 0 10px">লিঙ্কটি পেস্ট করুন, তারপর নিচের বাটনে ক্লিক করে QR কোড তৈরি করুন</p>
 </div>
 
 <div id="payBox" style="display:none;text-align:left;background:#0f172a;padding:12px;border-radius:12px">
@@ -103,7 +125,7 @@ input,select{width:100%;padding:12px;border-radius:10px;border:0;margin:6px 0;bo
 <p style="font-size:11px;color:#22c55e;margin-top:6px">🔒 আপনার UPI ID লুকানো আছে</p>
 </div>
 
-<button class="btn" onclick="make()">✨ QR কোড তৈরি করুন ✨</button>
+<button class="btn" onclick="make()" style="background:linear-gradient(90deg,#fde047,#facc15);color:#000;font-size:16px">✨ QR কোড তৈরি করুন ✨</button>
 <div id="qr"></div>
 <p id="msg" style="font-size:12px;color:#facc15;min-height:18px;margin:8px 0"></p>
 
@@ -165,16 +187,12 @@ const tInput = document.getElementById('t');
 const yellowBlock = document.getElementById('yellowBlock');
 function updateHighlight(){
   if(mode!=='link'){ yellowBlock.classList.remove('active'); return; }
-  if(tInput.value.trim().length > 3){
-    yellowBlock.classList.add('active');
-  } else {
-    yellowBlock.classList.remove('active');
-  }
+  if(tInput.value.trim().length > 3){ yellowBlock.classList.add('active'); }
+  else { yellowBlock.classList.remove('active'); }
 }
 tInput.addEventListener('input', ()=>{ updateHighlight(); make(); });
 tInput.addEventListener('focus', ()=>yellowBlock.classList.add('active'));
 tInput.addEventListener('blur', updateHighlight);
-
 function getWhiteQR(){
  let c=document.querySelector('#qr canvas'); if(!c) return null;
  let size=1000, border=120, temp=document.createElement('canvas');
