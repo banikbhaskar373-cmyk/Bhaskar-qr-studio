@@ -10,7 +10,7 @@ body{background:#0f172a;color:#fff;font-family:system-ui;text-align:center;paddi
 .box{max-width:420px;margin:0 auto}
 .card{background:#1e293b;padding:20px;border-radius:20px;max-width:380px;margin:20px auto}
 input,select{width:100%;padding:12px;border-radius:10px;border:0;margin:6px 0;box-sizing:border-box;font-size:14px}
-.btn{width:100%;padding:12px;background:#38bdf8;border:0;border-radius:10px;font-weight:bold;cursor:pointer;margin-top:8px}
+.btn{width:100%;padding:12px;border:0;border-radius:10px;font-weight:bold;cursor:pointer;margin-top:8px}
 #qr{background:#fff!important;padding:25px!important;border-radius:15px;margin:15px auto;display:flex;justify-content:center;min-height:220px;align-items:center}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
 .a{padding:12px;border-radius:10px;color:#fff;text-decoration:none;font-weight:bold;display:block;text-align:center}
@@ -18,7 +18,7 @@ input,select{width:100%;padding:12px;border-radius:10px;border:0;margin:6px 0;bo
 .pro{width:170px!important;height:170px!important;border-radius:50%!important;object-fit:cover!important;object-position:50% 10%!important;display:block!important;margin:20px auto!important;border:4px solid #38bdf8!important;box-shadow:0 0 30px rgba(56,189,248,0.6)!important;}
 .logo{width:110px;height:110px;border-radius:12px;object-fit:contain;display:block;margin:10px auto}
 
-/* ===== 2নং ডিজাইন - সুন্দর হলুদ ব্লক ===== */
+/* ===== 2নং ডিজাইন + হাইলাইট ===== */
 .cta-box{
   background:#fef9c3;
   border:2.5px dashed #000;
@@ -31,21 +31,23 @@ input,select{width:100%;padding:12px;border-radius:10px;border:0;margin:6px 0;bo
   align-items:center;
   gap:12px;
   text-align:left;
+  transition:all 0.3s ease;
 }
-.cta-icon{font-size:22px;flex-shrink:0;}
-.cta-text{font-size:14px;line-height:1.3;font-weight:800;}
-.cta-text span{font-size:12px;font-weight:600;opacity:0.7;display:block;margin-top:2px;}
-#linkBox input{
-  width:100%!important;
-  background:#ffffff!important;
-  border:2px solid #000!important;
-  border-radius:12px!important;
-  padding:13px 14px!important;
-  font-weight:600!important;
-  font-size:14px!important;
-  color:#000!important;
-  margin:0!important;
+.cta-box.active{
+  background:#fef08a;
+  border:2.5px solid #000;
+  box-shadow:0 0 0 4px #fef9c3, 0 0 30px rgba(250,204,21,0.9), 0 0 70px rgba(250,204,21,0.5);
+  transform:scale(1.02);
+  animation: yellowPulse 1.5s infinite;
 }
+@keyframes yellowPulse{
+  0%,100%{box-shadow:0 0 0 3px #fde047, 0 0 25px rgba(250,204,21,0.6)}
+  50%{box-shadow:0 0 0 8px #fef9c3, 0 0 45px rgba(250,204,21,0.9), 0 0 80px rgba(250,204,21,0.4)}
+}
+.cta-icon{font-size:22px;flex-shrink:0}
+.cta-text{font-size:14px;line-height:1.3;font-weight:800}
+.cta-text span{font-size:12px;font-weight:600;opacity:0.7;display:block;margin-top:3px}
+#linkBox input{width:100%!important;background:#ffffff!important;border:2px solid #000!important;border-radius:12px!important;padding:13px 14px!important;font-weight:600!important;font-size:14px!important;color:#000!important;margin:0!important}
 
 .poetry-btn{background:linear-gradient(90deg,#ec4899,#8b5cf6);padding:14px;border-radius:12px;margin:12px 0;display:block;color:#fff;text-decoration:none;font-weight:bold;font-size:18px}
 .blogger-btn{background:linear-gradient(90deg,#06b6d4,#3b82f6);padding:14px;border-radius:12px;margin:12px 0;display:block;color:#fff;text-decoration:none;font-weight:bold;font-size:18px}
@@ -67,12 +69,10 @@ input,select{width:100%;padding:12px;border-radius:10px;border:0;margin:6px 0;bo
 <h2 style="font-size:16px">🙏প্রিয় ডিজিটাল জগতে আপনাকে সুস্বাগতম🙏</h2>
 <a class="poetry-btn" href="https://banikbhaskar373-cmyk.github.io/chetonar-adhar/" target="_blank">💛 চেতনার আধারে 💛 কবিতা📚পরিক্রমা </a>
 <a class="blogger-btn" href="https://chetonaradhar373.blogspot.com" target="_blank">বিবস্বানের কবিতা ব্লগার<br><span style="font-size:15px;color:#facc15">chetonaradhar373 ♥️</span></a>
-
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:15px 0">
 <button id="b1" class="modeBtn" onclick="setM('link')" style="background:#38bdf8;color:#000">🔗 লিঙ্ক QR</button>
 <button id="b2" class="modeBtn" onclick="setM('pay')" style="background:#1e293b;color:#fff">💰 টাকা নেওয়ার QR</button>
 </div>
-
 <div id="linkBox">
 <div id="yellowBlock" class="cta-box">
 <div class="cta-icon">👇</div>
@@ -81,7 +81,6 @@ input,select{width:100%;padding:12px;border-radius:10px;border:0;margin:6px 0;bo
 <input id="t" type="text" value="https://chetonaradhar373.blogspot.com" placeholder="https://your-link-here.com">
 <p style="font-size:12px;color:#cbd5e1;margin:8px 0 10px">লিঙ্কটি পেস্ট করুন, তারপর নিচের বাটনে ক্লিক করে QR কোড তৈরি করুন</p>
 </div>
-
 <div id="payBox" style="display:none;text-align:left;background:#0f172a;padding:12px;border-radius:12px">
 <label style="font-size:13px;color:#38bdf8;font-weight:bold">💳 ব্যাঙ্ক বেছে নিন (ID সুরক্ষিত 🔒):</label>
 <select id="upi" onchange="make()"><option value="axis">Axis Bank - Main (Secure)</option><option value="icici">ICICI Bank (Secure)</option><option value="hdfc">HDFC Bank (Secure)</option></select>
@@ -89,17 +88,14 @@ input,select{width:100%;padding:12px;border-radius:10px;border:0;margin:6px 0;bo
 <label style="font-size:13px;margin-top:8px;display:block">টাকার পরিমাণ:</label><input id="amt" type="number" placeholder="যেমন 100" oninput="make()">
 <p style="font-size:11px;color:#22c55e;margin-top:6px">🔒 আপনার UPI ID লুকানো আছে</p>
 </div>
-
 <button class="btn" onclick="make()" style="background:linear-gradient(90deg,#fde047,#facc15);color:#000;font-size:16px">✨ QR কোড তৈরি করুন ✨</button>
 <div id="qr"></div>
 <p id="msg" style="font-size:12px;color:#facc15;min-height:18px;margin:8px 0"></p>
-
 <div class="print-grid">
 <button class="print-btn" onclick="downloadQR()" style="background:linear-gradient(90deg,#4A00E0,#8E2DE2)">⬇️ ডাউনলোড</button>
 <button class="print-btn" onclick="printQR()" style="background:linear-gradient(90deg,#FF6F00,#FFAB40)">🖨️ প্রিন্ট</button>
 <button class="print-btn" onclick="shareQR()" style="background:linear-gradient(90deg,#00C853,#64DD17)">📤 QR শেয়ার</button>
 </div>
-
 <div class="grid">
 <a class="a" style="background:#22c55e" href="tel:+919674131894">📞 কল 1</a>
 <a class="a" style="background:#22c55e" href="tel:+919433209439">📞 কল 2</a>
@@ -110,9 +106,8 @@ input,select{width:100%;padding:12px;border-radius:10px;border:0;margin:6px 0;bo
 </div>
 </div>
 </div>
-
 <script>
-const SECURE_UPI_MAP = {"axis": atob("YmFuaWtiaGFza2FyMzczLTFAb2theGlz"),"icici": atob("YmFuaWtiaGFza2FyMzczLTFAaWNpY2k="),"hdfc": atob("YmFuaWtiaGFza2FyMzczLTFAb2toZGZjYmFuaw==")};
+const SECURE_UPI_MAP={"axis":atob("YmFuaWtiaGFza2FyMzczLTFAb2theGlz"),"icici":atob("YmFuaWtiaGFza2FyMzczLTFAaWNpY2k="),"hdfc":atob("YmFuaWtiaGFza2FyMzczLTFAb2toZGZjYmFuaw==")};
 let mode='link';
 function setM(m){mode=m;document.getElementById('linkBox').style.display=m==='link'?'block':'none';document.getElementById('payBox').style.display=m==='pay'?'block':'none';document.getElementById('b1').style.background=m==='link'?'#38bdf8':'#1e293b';document.getElementById('b1').style.color=m==='link'?'#000':'#fff';document.getElementById('b2').style.background=m==='pay'?'#22c55e':'#1e293b';document.getElementById('b2').style.color=m==='pay'?'#000':'#fff';make();}
 function make(){let box=document.getElementById('qr');let txt='';let msg=document.getElementById('msg');if(mode==='link'){txt=document.getElementById('t').value.trim();msg.innerText=txt?'🔗 এই QR স্ক্যান করলে লিঙ্ক খুলবে':'';}else{let bankKey=document.getElementById('upi').value;let upi=SECURE_UPI_MAP[bankKey];let name=document.getElementById('pname').value.trim()||'Bhaskar Banik';let amt=document.getElementById('amt').value.trim();if(!upi){box.innerHTML="<span style='color:#fbbf24'>ব্যাঙ্ক বেছে নিন</span>";return;}txt=`upi://pay?pa=${upi}&pn=${encodeURIComponent(name)}&cu=INR`;if(amt) txt+=`&am=${amt}`;msg.innerText=amt?`💰 ₹${amt} পেমেন্ট QR`:'💰 টাকা পাঠানোর QR';}if(!txt) return;box.innerHTML='';new QRCode(box,{text:txt,width:260,height:260,colorDark:"#000000",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.H});}
@@ -120,7 +115,13 @@ function getWhiteQR(){let c=document.querySelector('#qr canvas');if(!c) return n
 function downloadQR(){let wq=getWhiteQR();if(!wq){alert('আগে QR বানান');return;}let a=document.createElement('a');a.href=wq.toDataURL('image/png');a.download=(mode==='pay'?'Bhaskar-Payment-QR':'Bhaskar-Link-QR')+'-'+Date.now()+'.png';a.click();}
 function printQR(){let wq=getWhiteQR();if(!wq) return;let src=wq.toDataURL();let w=window.open('','','width=800,height=900');w.document.write('<html><body style="text-align:center;padding:30px"><h2>💛 ভাস্কর ডিজিটাল স্টুডিও 💛</h2><img src="'+src+'" style="width:450px;height:450px"><p>📍 লিলুয়া | 📞 9433209439</p></body></html>');w.document.close();w.focus();setTimeout(()=>w.print(),600);}
 function shareQR(){let wq=getWhiteQR();if(!wq){alert('আগে QR বানান');return;}wq.toBlob(function(blob){let file=new File([blob],"Bhaskar-QR.png",{type:"image/png"});if(navigator.canShare && navigator.canShare({files:[file]})){navigator.share({files:[file],title:'ভাস্কর ডিজিটাল QR',text:mode==='pay'?'Payment QR':'Link QR'}).catch(()=>{});}else{downloadQR();}},'image/png');}
-window.addEventListener('load',()=>{make();});
+const tInput=document.getElementById('t');
+const yellowBlock=document.getElementById('yellowBlock');
+function updateHighlight(){if(mode!=='link'){yellowBlock.classList.remove('active');return;} if(tInput.value.trim().length>3){yellowBlock.classList.add('active');} else {yellowBlock.classList.remove('active');}}
+tInput.addEventListener('input',()=>{updateHighlight();make();});
+tInput.addEventListener('focus',()=>yellowBlock.classList.add('active'));
+tInput.addEventListener('blur',updateHighlight);
+window.addEventListener('load',()=>{make(); yellowBlock.classList.add('active'); setTimeout(()=>{updateHighlight();},3000);});
 </script>
 </body>
 </html>
