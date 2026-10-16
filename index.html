@@ -16,8 +16,24 @@ input,select{width:100%;padding:12px;border-radius:10px;border:0;margin:6px 0;bo
 .hero{width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;margin:0 auto;}
 .pro{width:170px!important;height:170px!important;border-radius:50%!important;object-fit:cover!important;object-position:50% 10%!important;display:block!important;margin:20px auto!important;border:4px solid #38bdf8!important;box-shadow:0 0 30px rgba(56,189,248,0.6)!important;}
 .logo{width:110px;height:110px;border-radius:12px;object-fit:contain;display:block;margin:10px auto}
-#qr{background:transparent!important;padding:12px 0!important;margin:12px auto;display:flex;justify-content:center;align-items:center;min-height:auto}
-#qr canvas, #qr img{background:#fff;padding:14px;border-radius:18px;box-shadow:0 8px 30px rgba(0,0,0,0.5)}
+
+/* QR এর সাদা পেজ তুলে দেওয়া হলো */
+#qr{
+  background:transparent!important;
+  padding:12px 0!important;
+  margin:12px auto;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height: auto;
+}
+#qr canvas, #qr img{
+  background:#fff;
+  padding:14px;
+  border-radius:18px;
+  box-shadow:0 8px 30px rgba(0,0,0,0.5);
+}
+
 .cta-box{background:#fef9c3;border:2.5px dashed #000;padding:14px 16px;border-radius:14px;margin:15px 0 10px 0;font-weight:800;color:#000;display:flex;align-items:center;gap:12px;text-align:left;transition:all 0.3s ease}
 .cta-box.active{background:#fef08a;border:2.5px solid #000;box-shadow:0 0 0 4px #fef9c3, 0 0 35px rgba(250,204,21,0.9);transform:scale(1.02);animation:yellowPulse 1.5s infinite}
 @keyframes yellowPulse{0%,100%{box-shadow:0 0 0 3px #fde047, 0 0 25px rgba(250,204,21,0.6)}50%{box-shadow:0 0 0 8px #fef9c3, 0 0 45px rgba(250,204,21,0.9)}}
@@ -30,9 +46,6 @@ input,select{width:100%;padding:12px;border-radius:10px;border:0;margin:6px 0;bo
 .print-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:14px 0}
 .print-btn{padding:12px;border-radius:10px;border:0;font-weight:800;cursor:pointer;font-size:13px;color:#fff}
 .modeBtn{padding:11px;border-radius:10px;border:0;font-weight:bold;cursor:pointer;width:100%;font-size:14px}
-/* নতুন কালার */
-.color-row{display:flex;align-items:center;justify-content:space-between;background:#0f172a;border:1px dashed #38bdf8;border-radius:12px;padding:10px 12px;margin:12px 0}
-.cdot{width:28px;height:28px;border-radius:50%;border:2px solid #fff;cursor:pointer}
 </style>
 </head>
 <body>
@@ -66,21 +79,6 @@ input,select{width:100%;padding:12px;border-radius:10px;border:0;margin:6px 0;bo
 <label style="font-size:13px;margin-top:8px;display:block">টাকার পরিমাণ:</label><input id="amt" type="number" placeholder="যেমন 100" oninput="make()">
 <p style="font-size:11px;color:#22c55e;margin-top:6px">🔒 আপনার UPI ID লুকানো আছে</p>
 </div>
-
-<div class="color-row">
-<div style="display:flex;align-items:center;gap:8px">
-<span style="font-size:13px;font-weight:bold">🎨 QR রঙ:</span>
-<input id="qrDark" type="color" value="#000000" style="width:36px;height:32px;padding:2px;border-radius:8px;border:0" oninput="make()">
-</div>
-<div style="display:flex;gap:6px">
-<div class="cdot" style="background:#000000" onclick="setColor('#000000')"></div>
-<div class="cdot" style="background:#2563eb" onclick="setColor('#2563eb')"></div>
-<div class="cdot" style="background:#db2777" onclick="setColor('#db2777')"></div>
-<div class="cdot" style="background:#16a34a" onclick="setColor('#16a34a')"></div>
-<div class="cdot" style="background:#7c3aed" onclick="setColor('#7c3aed')"></div>
-</div>
-</div>
-
 <button class="btn" onclick="make()" style="background:linear-gradient(90deg,#fde047,#facc15);color:#000;font-size:16px">✨ QR কোড তৈরি করুন ✨</button>
 <div id="qr"></div>
 <p id="msg" style="font-size:12px;color:#facc15;min-height:18px;margin:8px 0"></p>
@@ -103,8 +101,7 @@ input,select{width:100%;padding:12px;border-radius:10px;border:0;margin:6px 0;bo
 const SECURE_UPI_MAP={"axis":atob("YmFuaWtiaGFza2FyMzczLTFAb2theGlz"),"icici":atob("YmFuaWtiaGFza2FyMzczLTFAaWNpY2k="),"hdfc":atob("YmFuaWtiaGFza2FyMzczLTFAb2toZGZjYmFuaw==")};
 let mode='link';
 function setM(m){mode=m;document.getElementById('linkBox').style.display=m==='link'?'block':'none';document.getElementById('payBox').style.display=m==='pay'?'block':'none';document.getElementById('b1').style.background=m==='link'?'#38bdf8':'#1e293b';document.getElementById('b1').style.color=m==='link'?'#000':'#fff';document.getElementById('b2').style.background=m==='pay'?'#22c55e':'#1e293b';document.getElementById('b2').style.color=m==='pay'?'#000':'#fff';make();}
-function setColor(c){document.getElementById('qrDark').value=c;make();}
-function make(){let box=document.getElementById('qr');let txt='';let msg=document.getElementById('msg');let dark=document.getElementById('qrDark').value||"#000000";if(mode==='link'){txt=document.getElementById('t').value.trim();msg.innerText=txt?'🔗 এই QR স্ক্যান করলে লিঙ্ক খুলবে':'';}else{let bankKey=document.getElementById('upi').value;let upi=SECURE_UPI_MAP[bankKey];let name=document.getElementById('pname').value.trim()||'Bhaskar Banik';let amt=document.getElementById('amt').value.trim();if(!upi){box.innerHTML="<span style='color:#fbbf24'>ব্যাঙ্ক বেছে নিন</span>";return;}txt=`upi://pay?pa=${upi}&pn=${encodeURIComponent(name)}&cu=INR`;if(amt) txt+=`&am=${amt}`;msg.innerText=amt?`💰 ₹${amt} পেমেন্ট QR`:'💰 টাকা পাঠানোর QR';}if(!txt) return;box.innerHTML='';new QRCode(box,{text:txt,width:240,height:240,colorDark:dark,colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.H});}
+function make(){let box=document.getElementById('qr');let txt='';let msg=document.getElementById('msg');if(mode==='link'){txt=document.getElementById('t').value.trim();msg.innerText=txt?'🔗 এই QR স্ক্যান করলে লিঙ্ক খুলবে':'';}else{let bankKey=document.getElementById('upi').value;let upi=SECURE_UPI_MAP[bankKey];let name=document.getElementById('pname').value.trim()||'Bhaskar Banik';let amt=document.getElementById('amt').value.trim();if(!upi){box.innerHTML="<span style='color:#fbbf24'>ব্যাঙ্ক বেছে নিন</span>";return;}txt=`upi://pay?pa=${upi}&pn=${encodeURIComponent(name)}&cu=INR`;if(amt) txt+=`&am=${amt}`;msg.innerText=amt?`💰 ₹${amt} পেমেন্ট QR`:'💰 টাকা পাঠানোর QR';}if(!txt) return;box.innerHTML='';new QRCode(box,{text:txt,width:240,height:240,colorDark:"#000000",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.H});}
 function getWhiteQR(){let c=document.querySelector('#qr canvas');if(!c) return null;let size=1000,border=120,temp=document.createElement('canvas');temp.width=size;temp.height=size;let ctx=temp.getContext('2d');ctx.fillStyle="#ffffff";ctx.fillRect(0,0,size,size);ctx.drawImage(c,border,border,size-border*2,size-border*2);return temp;}
 function downloadQR(){let wq=getWhiteQR();if(!wq){alert('আগে QR বানান');return;}let a=document.createElement('a');a.href=wq.toDataURL('image/png');a.download=(mode==='pay'?'Bhaskar-Payment-QR':'Bhaskar-Link-QR')+'-'+Date.now()+'.png';a.click();}
 function printQR(){let wq=getWhiteQR();if(!wq) return;let src=wq.toDataURL();let w=window.open('','','width=800,height=900');w.document.write('<html><body style="text-align:center;padding:30px"><h2>💛 ভাস্কর ডিজিটাল স্টুডিও 💛</h2><img src="'+src+'" style="width:450px;height:450px"><p>📍 লিলুয়া | 📞 9433209439</p></body></html>');w.document.close();w.focus();setTimeout(()=>w.print(),600);}
