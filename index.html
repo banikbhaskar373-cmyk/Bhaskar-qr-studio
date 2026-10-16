@@ -17,7 +17,19 @@ input,select{width:100%;padding:12px;border-radius:10px;border:0;margin:6px 0;bo
 .hero{width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;margin:0 auto;}
 .pro{width:170px!important;height:170px!important;border-radius:50%!important;object-fit:cover!important;object-position:50% 10%!important;display:block!important;margin:20px auto!important;border:4px solid #38bdf8!important;box-shadow:0 0 30px rgba(56,189,248,0.6)!important;}
 .logo{width:110px;height:110px;border-radius:12px;object-fit:contain;display:block;margin:10px auto}
-.cta-box{background:linear-gradient(90deg,#fef08a,#facc15);color:#000;border:2px dashed #000;padding:13px;border-radius:12px;margin:15px 0;font-weight:bold;font-size:16px}
+.cta-box{background:linear-gradient(90deg,#fef08a,#facc15);color:#000;border:2px dashed #000;padding:13px;border-radius:12px;margin:15px 0;font-weight:bold;font-size:16px;transition:all 0.3s ease;}
+.cta-box.active{
+  background:linear-gradient(90deg,#fde047,#facc15)!important;
+  border:3px solid #000!important;
+  box-shadow:0 0 0 5px #fef08a, 0 0 30px #facc15!important;
+  transform:scale(1.04);
+  animation: yellowPulse 1s infinite;
+}
+@keyframes yellowPulse{
+  0%{box-shadow:0 0 0 4px #fef08a, 0 0 15px #facc15;}
+  50%{box-shadow:0 0 0 10px #fef08a, 0 0 35px #facc15;}
+  100%{box-shadow:0 0 0 4px #fef08a, 0 0 15px #facc15;}
+}
 .poetry-btn{background:linear-gradient(90deg,#ec4899,#8b5cf6);padding:14px;border-radius:12px;margin:12px 0;display:block;color:#fff;text-decoration:none;font-weight:bold;font-size:18px}
 .blogger-btn{background:linear-gradient(90deg,#06b6d4,#3b82f6);padding:14px;border-radius:12px;margin:12px 0;display:block;color:#fff;text-decoration:none;font-weight:bold;font-size:18px}
 .print-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:14px 0}
@@ -45,8 +57,8 @@ input,select{width:100%;padding:12px;border-radius:10px;border:0;margin:6px 0;bo
 </div>
 
 <div id="linkBox">
-<div class="cta-box">👇 যে কোনো লিঙ্ক এখানে লিখুন / পেস্ট করুন 👇<br><span style="font-size:13px;font-weight:normal">(Facebook, YouTube, দোকানের লিঙ্ক)</span></div>
-<input id="t" type="text" value="https://chetonaradhar373.blogspot.com" oninput="make()" placeholder="এখানে লিঙ্ক লিখুন...">
+<div id="yellowBlock" class="cta-box">👇 যে কোনো লিঙ্ক এখানে লিখুন / পেস্ট করুন 👇<br><span style="font-size:13px;font-weight:normal">(Facebook, YouTube, দোকানের লিঙ্ক)</span></div>
+<input id="t" type="text" value="https://chetonaradhar373.blogspot.com" placeholder="এখানে লিঙ্ক লিখুন...">
 </div>
 
 <div id="payBox" style="display:none;text-align:left;background:#0f172a;padding:12px;border-radius:12px">
@@ -58,9 +70,8 @@ input,select{width:100%;padding:12px;border-radius:10px;border:0;margin:6px 0;bo
 </select>
 <label style="font-size:13px;margin-top:8px;display:block">আপনার নাম:</label>
 <input id="pname" value="Bhaskar Banik" oninput="make()">
-<label style="font-size:13px;margin-top:8px;display:block">টাকার পরিমাণ (খালি রাখলে কাস্টমার নিজে লিখবে):</label>
+<label style="font-size:13px;margin-top:8px;display:block">টাকার পরিমাণ:</label>
 <input id="amt" type="number" placeholder="যেমন 100" oninput="make()">
-<p style="font-size:11px;color:#22c55e;margin-top:6px">🔒 আপনার UPI ID কোডের ভিতরে লুকানো আছে, বাইরে কেউ দেখতে পাবে না</p>
 </div>
 
 <button class="btn" onclick="make()">✨ QR কোড তৈরি করুন ✨</button>
@@ -85,13 +96,11 @@ input,select{width:100%;padding:12px;border-radius:10px;border:0;margin:6px 0;bo
 </div>
 
 <script>
-// ===== 🔒 UPI ID HIDDEN - বাইরে থেকে দেখা যাবে না =====
 const SECURE_UPI_MAP = {
   "axis": atob("YmFuaWtiaGFza2FyMzczLTFAb2theGlz"),
   "icici": atob("YmFuaWtiaGFza2FyMzczLTFAaWNpY2k="),
   "hdfc": atob("YmFuaWtiaGFza2FyMzczLTFAb2toZGZjYmFuaw==")
 };
-
 let mode='link';
 function setM(m){
  mode=m;
@@ -101,11 +110,10 @@ function setM(m){
  document.getElementById('b1').style.color=m==='link'?'#000':'#fff';
  document.getElementById('b2').style.background=m==='pay'?'#22c55e':'#1e293b';
  document.getElementById('b2').style.color=m==='pay'?'#000':'#fff';
- make();
+ updateHighlight(); make();
 }
 function make(){
- let box=document.getElementById('qr');
- let txt=''; let msg=document.getElementById('msg');
+ let box=document.getElementById('qr'); let txt=''; let msg=document.getElementById('msg');
  if(mode==='link'){
   txt=document.getElementById('t').value.trim();
   msg.innerText = txt? '🔗 এই QR স্ক্যান করলে লিঙ্ক খুলবে' : '';
@@ -114,15 +122,29 @@ function make(){
   let upi=SECURE_UPI_MAP[bankKey];
   let name=document.getElementById('pname').value.trim()||'Bhaskar Banik';
   let amt=document.getElementById('amt').value.trim();
-  if(!upi){ box.innerHTML="<span style='color:#fbbf24'>ব্যাঙ্ক বেছে নিন গুরুদেব</span>"; return; }
+  if(!upi){ box.innerHTML="<span style='color:#fbbf24'>ব্যাঙ্ক বেছে নিন</span>"; return; }
   txt=`upi://pay?pa=${upi}&pn=${encodeURIComponent(name)}&cu=INR`;
   if(amt) txt+=`&am=${amt}`;
-  msg.innerText = amt? `💰 এই QR স্ক্যান করলে ₹${amt} টাকা পেমেন্ট খুলবে - সরাসরি আপনার ব্যাঙ্কে আসবে` : '💰 এই QR স্ক্যান করলে টাকা পাঠানোর পেজ খুলবে - সরাসরি আপনার ব্যাঙ্কে আসবে';
+  msg.innerText = amt? `💰 ₹${amt} পেমেন্ট QR` : '💰 টাকা পাঠানোর QR';
  }
  if(!txt) return;
  box.innerHTML='';
- new QRCode(box,{text:txt,width:260,height:260,colorDark:"#000000",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.H});
+ new QRCode(box,{text:txt,width:260,height:260,correctLevel:QRCode.CorrectLevel.H});
+ updateHighlight();
 }
+const tInput = document.getElementById('t');
+const yellowBlock = document.getElementById('yellowBlock');
+function updateHighlight(){
+  if(mode!=='link'){ yellowBlock.classList.remove('active'); return; }
+  if(tInput.value.trim().length > 5 || document.activeElement===tInput){
+    yellowBlock.classList.add('active');
+  } else {
+    yellowBlock.classList.remove('active');
+  }
+}
+tInput.addEventListener('input', updateHighlight);
+tInput.addEventListener('focus', ()=>yellowBlock.classList.add('active'));
+tInput.addEventListener('blur', updateHighlight);
 function getWhiteQR(){
  let c=document.querySelector('#qr canvas'); if(!c) return null;
  let size=1000, border=120, temp=document.createElement('canvas');
@@ -131,32 +153,26 @@ function getWhiteQR(){
  ctx.drawImage(c,border,border,size-border*2,size-border*2); return temp;
 }
 function downloadQR(){
- let wq=getWhiteQR(); if(!wq){ alert('আগে QR বানান গুরুদেব'); return; }
- let a=document.createElement('a');
- a.href=wq.toDataURL('image/png');
- let fname = mode==='pay'? 'Bhaskar-Payment-QR' : 'Bhaskar-Link-QR';
- a.download=fname+'-'+Date.now()+'.png'; a.click();
+ let wq=getWhiteQR(); if(!wq){ alert('আগে QR বানান'); return; }
+ let a=document.createElement('a'); a.href=wq.toDataURL('image/png');
+ a.download=(mode==='pay'?'Bhaskar-Payment-QR':'Bhaskar-Link-QR')+'-'+Date.now()+'.png'; a.click();
 }
 function printQR(){
  let wq=getWhiteQR(); if(!wq) return;
- let src=wq.toDataURL();
- let w=window.open('','','width=800,height=900');
- w.document.write('<html><body style="text-align:center;padding:30px;font-family:system-ui"><h2>💛 ভাস্কর ডিজিটাল স্টুডিও 💛</h2><img src="'+src+'" style="width:450px;height:450px"><p>📍 লিলুয়া | 📞 9433209439</p><p>Scan & Pay</p></body></html>');
+ let src=wq.toDataURL(); let w=window.open('','','width=800,height=900');
+ w.document.write('<html><body style="text-align:center;padding:30px"><h2>💛 ভাস্কর ডিজিটাল স্টুডিও 💛</h2><img src="'+src+'" style="width:450px;height:450px"><p>📍 লিলুয়া | 📞 9433209439</p></body></html>');
  w.document.close(); w.focus(); setTimeout(()=>w.print(),600);
 }
 function shareQR(){
- let wq=getWhiteQR(); if(!wq){ alert('আগে QR বানান গুরুদেব'); return; }
+ let wq=getWhiteQR(); if(!wq){ alert('আগে QR বানান'); return; }
  wq.toBlob(function(blob){
   let file=new File([blob], "Bhaskar-QR.png", {type:"image/png"});
   if(navigator.canShare && navigator.canShare({files:[file]})){
    navigator.share({files:[file],title:'ভাস্কর ডিজিটাল QR',text:mode==='pay'?'Payment QR':'Link QR'}).catch(()=>{});
-  } else {
-   downloadQR();
-   alert('গুরুদেব এই ফোনে সরাসরি QR ছবি শেয়ার হয় না, তাই ডাউনলোড করে দিলাম। এবার গ্যালারি থেকে শেয়ার করুন 🙏');
-  }
+  } else { downloadQR(); }
  },'image/png');
 }
-make();
+window.addEventListener('load', ()=>{ make(); updateHighlight(); yellowBlock.classList.add('active'); setTimeout(()=>{updateHighlight();},2500); });
 </script>
 </body>
 </html>
