@@ -106,6 +106,17 @@ function getWhiteQR(){let c=document.querySelector('#qr canvas');if(!c) return n
 function downloadQR(){let wq=getWhiteQR();if(!wq){alert('আগে QR বানান');return;}let a=document.createElement('a');a.href=wq.toDataURL('image/png');a.download=(mode==='pay'?'Bhaskar-Payment-QR':'Bhaskar-Link-QR')+'-'+Date.now()+'.png';a.click();}
 function printQR(){let wq=getWhiteQR();if(!wq) return;let src=wq.toDataURL();let w=window.open('','','width=800,height=900');w.document.write('<html><body style="text-align:center;padding:30px"><h2>💛 ভাস্কর ডিজিটাল স্টুডিও 💛</h2><img src="'+src+'" style="width:450px;height:450px"><p>📍 লিলুয়া | 📞 9433209439</p></body></html>');w.document.close();w.focus();setTimeout(()=>w.print(),600);}
 function shareQR(){let wq=getWhiteQR();if(!wq){alert('আগে QR বানান');return;}wq.toBlob(function(blob){let file=new File([blob],"Bhaskar-QR.png",{type:"image/png"});if(navigator.canShare && navigator.canShare({files:[file]})){navigator.share({files:[file],title:'ভাস্কর ডিজিটাল QR',text:mode==='pay'?'Payment QR':'Link QR'}).catch(()=>{});}else{downloadQR();}},'image/png');}
+function shareStudioLink(){
+let studioLink = window.location.href;
+let shareText = "💛 ভাস্কর ডিজিটাল স্টুডিও 💛\n📍 লিলুয়া, হাওড়া\n" + studioLink;
+if(navigator.share){
+navigator.share({title:"ভাস্কর ডিজিটাল স্টুডিও", text:shareText, url:studioLink}).catch(()=>{});
+}else{
+navigator.clipboard.writeText(studioLink).then(()=>{
+alert("✅ লিঙ্ক কপি হয়েছে:\n" + studioLink);
+});
+}
+}
 const tInput=document.getElementById('t');const yellowBlock=document.getElementById('yellowBlock');
 function updateHighlight(){if(mode!=='link'){yellowBlock.classList.remove('active');return;} if(tInput.value.trim().length>3){yellowBlock.classList.add('active');} else {yellowBlock.classList.remove('active');}}
 tInput.addEventListener('input',()=>{updateHighlight();make();});
