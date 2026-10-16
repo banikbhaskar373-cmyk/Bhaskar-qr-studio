@@ -102,11 +102,11 @@ input,select{width:100%;padding:12px;border-radius:10px;border:0;margin:6px 0;bo
 
 <div id="linkBox">
 <div id="yellowBlock" class="cta-box">
-  <div class="cta-top">
-    <div class="cta-icon">🔗</div>
-    <div class="cta-text">যে কোনো লিঙ্ক এখানে<br>লিখুন / পেস্ট করুন</div>
-  </div>
-  <input id="t" type="text" value="https://chetonaradhar373.blogspot.com" placeholder="https://your-link-here.com">
+<div class="cta-top">
+<div class="cta-icon">🔗</div>
+<div class="cta-text">যে কোনো লিঙ্ক এখানে<br>লিখুন / পেস্ট করুন</div>
+</div>
+<input id="t" type="text" value="https://chetonaradhar373.blogspot.com" placeholder="https://your-link-here.com">
 </div>
 <p style="font-size:12px;color:#cbd5e1;margin:-5px 0 10px">লিঙ্কটি পেস্ট করুন, তারপর নিচের বাটনে ক্লিক করে QR কোড তৈরি করুন</p>
 </div>
@@ -148,9 +148,9 @@ input,select{width:100%;padding:12px;border-radius:10px;border:0;margin:6px 0;bo
 
 <script>
 const SECURE_UPI_MAP = {
-  "axis": atob("YmFuaWtiaGFza2FyMzczLTFAb2theGlz"),
-  "icici": atob("YmFuaWtiaGFza2FyMzczLTFAaWNpY2k="),
-  "hdfc": atob("YmFuaWtiaGFza2FyMzczLTFAb2toZGZjYmFuaw==")
+"axis": atob("YmFuaWtiaGFza2FyMzczLTFAb2theGlz"),
+"icici": atob("YmFuaWtiaGFza2FyMzczLTFAaWNpY2k="),
+"hdfc": atob("YmFuaWtiaGFza2FyMzczLTFAb2toZGZjYmFuaw==")
 };
 let mode='link';
 function setM(m){
@@ -164,66 +164,66 @@ function setM(m){
  updateHighlight(); make();
 }
 function make(){
- let box=document.getElementById('qr'); let txt=''; let msg=document.getElementById('msg');
- if(mode==='link'){
-  txt=document.getElementById('t').value.trim();
-  msg.innerText = txt? '🔗 এই QR স্ক্যান করলে লিঙ্ক খুলবে' : '';
- } else {
-  let bankKey=document.getElementById('upi').value;
-  let upi=SECURE_UPI_MAP[bankKey];
-  let name=document.getElementById('pname').value.trim()||'Bhaskar Banik';
-  let amt=document.getElementById('amt').value.trim();
-  if(!upi){ box.innerHTML="<span style='color:#fbbf24'>ব্যাঙ্ক বেছে নিন</span>"; return; }
-  txt=`upi://pay?pa=${upi}&pn=${encodeURIComponent(name)}&cu=INR`;
-  if(amt) txt+=`&am=${amt}`;
-  msg.innerText = amt? `💰 ₹${amt} পেমেন্ট QR` : '💰 টাকা পাঠানোর QR';
- }
- if(!txt) return;
- box.innerHTML='';
- new QRCode(box,{text:txt,width:260,height:260,colorDark:"#000000",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.H});
- updateHighlight();
+let box=document.getElementById('qr'); let txt=''; let msg=document.getElementById('msg');
+if(mode==='link'){
+txt=document.getElementById('t').value.trim();
+msg.innerText = txt? '🔗 এই QR স্ক্যান করলে লিঙ্ক খুলবে' : '';
+} else {
+let bankKey=document.getElementById('upi').value;
+let upi=SECURE_UPI_MAP[bankKey];
+let name=document.getElementById('pname').value.trim()||'Bhaskar Banik';
+let amt=document.getElementById('amt').value.trim();
+if(!upi){ box.innerHTML="<span style='color:#fbbf24'>ব্যাঙ্ক বেছে নিন</span>"; return; }
+txt=`upi://pay?pa=${upi}&pn=${encodeURIComponent(name)}&cu=INR`;
+if(amt) txt+=`&am=${amt}`;
+msg.innerText = amt? `💰 ₹${amt} পেমেন্ট QR` : '💰 টাকা পাঠানোর QR';
+}
+if(!txt) return;
+box.innerHTML='';
+new QRCode(box,{text:txt,width:260,height:260,colorDark:"#000000",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.H});
+updateHighlight();
 }
 const tInput = document.getElementById('t');
 const yellowBlock = document.getElementById('yellowBlock');
 function updateHighlight(){
-  if(mode!=='link'){ yellowBlock.classList.remove('active'); return; }
-  if(tInput.value.trim().length > 3){ yellowBlock.classList.add('active'); }
-  else { yellowBlock.classList.remove('active'); }
+if(mode!=='link'){ yellowBlock.classList.remove('active'); return; }
+if(tInput.value.trim().length > 3){ yellowBlock.classList.add('active'); }
+else { yellowBlock.classList.remove('active'); }
 }
 tInput.addEventListener('input', ()=>{ updateHighlight(); make(); });
 tInput.addEventListener('focus', ()=>yellowBlock.classList.add('active'));
 tInput.addEventListener('blur', updateHighlight);
 function getWhiteQR(){
- let c=document.querySelector('#qr canvas'); if(!c) return null;
- let size=1000, border=120, temp=document.createElement('canvas');
- temp.width=size; temp.height=size;
- let ctx=temp.getContext('2d'); ctx.fillStyle="#ffffff"; ctx.fillRect(0,0,size,size);
- ctx.drawImage(c,border,border,size-border*2,size-border*2); return temp;
+let c=document.querySelector('#qr canvas'); if(!c) return null;
+let size=1000, border=120, temp=document.createElement('canvas');
+temp.width=size; temp.height=size;
+let ctx=temp.getContext('2d'); ctx.fillStyle="#ffffff"; ctx.fillRect(0,0,size,size);
+ctx.drawImage(c,border,border,size-border*2,size-border*2); return temp;
 }
 function downloadQR(){
- let wq=getWhiteQR(); if(!wq){ alert('আগে QR বানান'); return; }
- let a=document.createElement('a'); a.href=wq.toDataURL('image/png');
- a.download=(mode==='pay'?'Bhaskar-Payment-QR':'Bhaskar-Link-QR')+'-'+Date.now()+'.png'; a.click();
+let wq=getWhiteQR(); if(!wq){ alert('আগে QR বানান'); return; }
+let a=document.createElement('a'); a.href=wq.toDataURL('image/png');
+a.download=(mode==='pay'?'Bhaskar-Payment-QR':'Bhaskar-Link-QR')+'-'+Date.now()+'.png'; a.click();
 }
 function printQR(){
- let wq=getWhiteQR(); if(!wq) return;
- let src=wq.toDataURL(); let w=window.open('','','width=800,height=900');
- w.document.write('<html><body style="text-align:center;padding:30px"><h2>💛 ভাস্কর ডিজিটাল স্টুডিও 💛</h2><img src="'+src+'" style="width:450px;height:450px"><p>📍 লিলুয়া | 📞 9433209439</p></body></html>');
- w.document.close(); w.focus(); setTimeout(()=>w.print(),600);
+let wq=getWhiteQR(); if(!wq) return;
+let src=wq.toDataURL(); let w=window.open('','','width=800,height=900');
+w.document.write('<html><body style="text-align:center;padding:30px"><h2>💛 ভাস্কর ডিজিটাল স্টুডিও 💛</h2><img src="'+src+'" style="width:450px;height:450px"><p>📍 লিলুয়া | 📞 9433209439</p></body></html>');
+w.document.close(); w.focus(); setTimeout(()=>w.print(),600);
 }
 function shareQR(){
- let wq=getWhiteQR(); if(!wq){ alert('আগে QR বানান'); return; }
- wq.toBlob(function(blob){
-  let file=new File([blob], "Bhaskar-QR.png", {type:"image/png"});
-  if(navigator.canShare && navigator.canShare({files:[file]})){
-   navigator.share({files:[file],title:'ভাস্কর ডিজিটাল QR',text:mode==='pay'?'Payment QR':'Link QR'}).catch(()=>{});
-  } else { downloadQR(); }
- },'image/png');
+let wq=getWhiteQR(); if(!wq){ alert('আগে QR বানান'); return; }
+wq.toBlob(function(blob){
+let file=new File([blob], "Bhaskar-QR.png", {type:"image/png"});
+if(navigator.canShare && navigator.canShare({files:[file]})){
+navigator.share({files:[file],title:'ভাস্কর ডিজিটাল QR',text:mode==='pay'?'Payment QR':'Link QR'}).catch(()=>{});
+} else { downloadQR(); }
+},'image/png');
 }
 window.addEventListener('load', ()=>{
-  make();
-  yellowBlock.classList.add('active');
-  setTimeout(()=>{ updateHighlight(); },3000);
+make();
+yellowBlock.classList.add('active');
+setTimeout(()=>{ updateHighlight(); },3000);
 });
 </script>
 </body>
