@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>♥️ভাস্কর ডিজিটাল স্টুডিও♥️</title>
+<!-- Google AdSense Verification - Added by Bhaskar -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5073265811027270"
+     crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
 /* Security: Disable selection */
@@ -86,7 +89,6 @@ input,select{width:100%;padding:12px;border-radius:10px;border:0;margin:6px 0;bo
 </div>
 </div>
 <script>
-// ===== SECURITY LAYER =====
 document.addEventListener('contextmenu', e => e.preventDefault());
 document.addEventListener('selectstart', e => { if(!e.target.matches('input,textarea,select')) e.preventDefault(); });
 document.addEventListener('copy', e => { if(!e.target.matches('input,textarea')) e.preventDefault(); });
@@ -95,15 +97,12 @@ document.addEventListener('dragstart', e => e.preventDefault());
 document.addEventListener('keydown', e => {
   if(e.key === 'F12' || (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key.toUpperCase())) || (e.ctrlKey && ['U','S','P','A'].includes(e.key.toUpperCase()))){ e.preventDefault(); return false; }
 });
-
-// Encrypted UPI - 2 layer obfuscation (not plain atob)
 function _d(s){ try{ return atob(s.split('').reverse().join('')); }catch(e){ return ''; } }
 const SECURE_UPI_MAP={
   "axis": _d("=QHbhxGdoxWahxWY3x2bkBnbldmIs8SbvNmL0V2XyBnM"),
   "icici": _d("=k2YiN3cl1WYjJ3b3x2bkBnbldmIs8SbvNmL0V2XyBnM"),
   "hdfc": _d("=8Wah1Wamx2bkx2ZhN3cl1WYjJ3b3x2bkBnbldmIs8SbvNmL0V2XyBnM")
 };
-
 let mode='link';
 function setM(m){mode=m;document.getElementById('linkBox').style.display=m==='link'?'block':'none';document.getElementById('payBox').style.display=m==='pay'?'block':'none';document.getElementById('b1').style.background=m==='link'?'#38bdf8':'#1e293b';document.getElementById('b1').style.color=m==='link'?'#000':'#fff';document.getElementById('b2').style.background=m==='pay'?'#22c55e':'#1e293b';document.getElementById('b2').style.color=m==='pay'?'#000':'#fff';make();}
 function make(){let box=document.getElementById('qr');let txt='';let msg=document.getElementById('msg');if(mode==='link'){txt=document.getElementById('t').value.trim();msg.innerText=txt?'🔗 এই QR স্ক্যান করলে লিঙ্ক খুলবে':'';}else{let bankKey=document.getElementById('upi').value;let upi=SECURE_UPI_MAP[bankKey];let name=document.getElementById('pname').value.trim()||'Bhaskar Banik';let amt=document.getElementById('amt').value.trim();if(!upi){box.innerHTML="<span style='color:#fbbf24'>ব্যাঙ্ক বেছে নিন</span>";return;}txt=`upi://pay?pa=${upi}&pn=${encodeURIComponent(name)}&cu=INR`;if(amt) txt+=`&am=${amt}`;msg.innerText=amt?`💰 ₹${amt} পেমেন্ট QR`:'💰 টাকা পাঠানোর QR';}if(!txt) return;box.innerHTML='';new QRCode(box,{text:txt,width:240,height:240,colorDark:"#000000",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.H});}
