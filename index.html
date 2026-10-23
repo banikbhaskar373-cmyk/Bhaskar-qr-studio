@@ -1,58 +1,132 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bhaskar Digital Studio - Free QR Code Generator</title>
-    
-    <!-- GOOGLE ADSENSE CODE - এটা খুব জরুরি -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6513819971451460"
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>♥️ভাস্কর ডিজিটাল স্টুডিও♥️</title>
+<!-- Google AdSense Verification - Added by Bhaskar -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5073265811027270"
      crossorigin="anonymous"></script>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
-    <style>
-        body { font-family: 'Hind Siliguri', sans-serif; }
-    </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+/* Security: Disable selection */
+body{background:#0f172a;color:#fff;font-family:system-ui;text-align:center;padding:15px;margin:0;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-touch-callout:none}
+input,select,textarea{-webkit-user-select:text!important;-moz-user-select:text!important;-ms-user-select:text!important;user-select:text!important;}
+/* Your old CSS */
+.box{max-width:420px;margin:0 auto}
+.card{background:#1e293b;padding:20px;border-radius:20px;max-width:380px;margin:20px auto}
+input,select{width:100%;padding:12px;border-radius:10px;border:0;margin:6px 0;box-sizing:border-box;font-size:14px}
+.btn{width:100%;padding:12px;border:0;border-radius:10px;font-weight:bold;cursor:pointer;margin-top:8px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.a{min-height:54px;padding:12px;border-radius:10px;color:#fff;text-decoration:none;font-weight:bold;display:flex;align-items:center;justify-content:center;text-align:center;box-sizing:border-box}
+.hero{width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;margin:0 auto;}
+.pro{width:170px!important;height:170px!important;border-radius:50%!important;object-fit:cover!important;object-position:50% 10%!important;display:block!important;margin:20px auto!important;border:4px solid #38bdf8!important;box-shadow:0 0 30px rgba(56,189,248,0.6)!important;}
+.logo{width:110px;height:110px;border-radius:12px;object-fit:contain;display:block;margin:10px auto}
+#qr{background:transparent!important;padding:12px 0!important;margin:12px auto;display:flex;justify-content:center;align-items:center;min-height: auto;}
+#qr canvas, #qr img{background:#fff;padding:14px;border-radius:18px;box-shadow:0 8px 30px rgba(0,0,0,0.5);}
+.cta-box{background:#fef9c3;border:2.5px dashed #000;padding:14px 16px;border-radius:14px;margin:15px 0 10px 0;font-weight:800;color:#000;display:flex;align-items:center;gap:12px;text-align:left;transition:all 0.3s ease}
+.cta-box.active{background:#fef08a;border:2.5px solid #000;box-shadow:0 0 0 4px #fef9c3, 0 0 35px rgba(250,204,21,0.9);transform:scale(1.02);animation:yellowPulse 1.5s infinite}
+@keyframes yellowPulse{0%,100%{box-shadow:0 0 0 3px #fde047, 0 0 25px rgba(250,204,21,0.6)}50%{box-shadow:0 0 0 8px #fef9c3, 0 0 45px rgba(250,204,21,0.9)}}
+.cta-icon{font-size:22px;flex-shrink:0}
+.cta-text{font-size:14px;line-height:1.3;font-weight:800}
+.cta-text span{font-size:12px;font-weight:600;opacity:0.7;display:block;margin-top:3px}
+#linkBox input{width:100%!important;background:#ffffff!important;border:2px solid #000!important;border-radius:12px!important;padding:13px 14px!important;font-weight:600!important;font-size:14px!important;color:#000!important;margin:0!important}
+.poetry-btn,.blogger-btn{padding:14px;border-radius:12px;margin:12px 0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-decoration:none;font-weight:bold;font-size:18px;min-height:74px;box-sizing:border-box;line-height:1.25}
+.poetry-btn{background:linear-gradient(90deg,#ec4899,#8b5cf6)}
+.blogger-btn{background:linear-gradient(90deg,#06b6d4,#3b82f6)}
+.print-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:14px 0}
+.print-btn{min-height:48px;padding:12px;border-radius:10px;border:0;font-weight:800;cursor:pointer;font-size:13px;color:#fff;display:flex;align-items:center;justify-content:center;box-sizing:border-box}
+.modeBtn{padding:11px;border-radius:10px;border:0;font-weight:bold;cursor:pointer;width:100%;font-size:14px;min-height:46px}
+</style>
 </head>
-<body class="bg-gray-50 min-h-screen flex flex-col items-center p-4">
-
-    <header class="w-full max-w-4xl text-center py-6">
-        <h1 class="text-3xl font-bold text-gray-800">Bhaskar Digital Studio</h1>
-        <p class="text-gray-500">Free & Fast QR Code Generator</p>
-    </header>
-
-    <!-- Ad Space Top -->
-    <div class="w-full max-w-4xl bg-white border border-dashed h-24 flex items-center justify-center text-gray-400 text-sm mb-6 rounded-lg">
-        Advertisement Space
-    </div>
-
-    <main class="w-full max-w-4xl bg-white rounded-2xl shadow-lg p-6 md:p-8 grid md:grid-cols-2 gap-8">
-        <div>
-            <label class="font-semibold text-gray-700">আপনার লেখা বা লিংক দিন:</label>
-            <textarea id="qr-text" class="w-full mt-2 p-4 border rounded-lg h-32 focus:ring-2 focus:ring-blue-500 outline-none" placeholder="https://bhaskardigitalstudio.in"></textarea>
-            
-            <button onclick="generateQR()" class="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition">
-                QR Code বানান
-            </button>
-
-            <div class="mt-8 text-sm text-gray-500">
-                <h3 class="font-bold text-gray-700">এই টুলটি কেন ব্যবহার করবেন?</h3>
-                <p class="mt-2">আমাদের এই টুলটি ১০০% ফ্রি, দ্রুত এবং নিরাপদ। কোনো লগইন লাগবে না। আপনার ডেটা আমরা সেভ করি না। বিজনেস, দোকান, ইউটিউব চ্যানেলের জন্য সহজেই QR বানাতে পারবেন।</p>
-            </div>
-        </div>
-
-        <div class="flex flex-col items-center justify-center bg-gray-50 rounded-xl p-6 border">
-            <div id="qrcode" class="bg-white p-4 rounded-lg shadow-sm"></div>
-            <p class="text-gray-400 text-sm mt-4">এখানে আপনার QR কোড দেখা যাবে</p>
-            <button id="download-btn" onclick="downloadQR()" class="hidden mt-4 bg-green-600 text-white px-6 py-2 rounded-lg">Download</button>
-        </div>
-    </main>
-
-    <!-- Ad Space Bottom -->
-    <div class="w-full max-w-4xl bg-white border border-dashed h-60 flex items-center justify-center text-gray-400 text-sm mt-6 rounded-lg">
-        Advertisement Space
-    </div>
-
-    <footer class="py-8 text-center text-gray-400 text-sm">
-        <p>© 2026 Bhaskar Digital Studio | <a href="/privacy.html
+<body>
+<div class="box">
+<div class="hero">
+<img class="pro" src="IMG-20260923-WA3151.jpg" alt="Bhaskar">
+<h2>💛ভাস্কর ডিজিটাল💛 ♥️স্টুডিও♥️</h2>
+<p>📍 কলকাতা, হাওড়া, লিলুয়া 711204</p>
+<p>📞 9674131894 💬9433209439</p>
+</div>
+<div class="card">
+<img class="logo" src="IMG_20260921_230415.jpg" alt="logo">
+<h2 style="font-size:16px">🙏প্রিয় ডিজিটাল জগতে আপনাকে সুস্বাগতম🙏</h2>
+<a class="poetry-btn" href="https://kobita.bhaskardigitalstudio.in" target="_blank">💛 চেতনার আধারে 💛<span style="font-size:16px;margin-top:2px">কবিতা📚পরিক্রমা</span></a>
+<a class="blogger-btn" href="https://chetonaradhar373.blogspot.com" target="_blank">বিবস্বানের কবিতা ব্লগার<br><span style="font-size:15px;color:#facc15">chetonaradhar373 ♥️</span></a>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:15px 0">
+<button id="b1" class="modeBtn" onclick="setM('link')" style="background:#38bdf8;color:#000">🔗 লিঙ্ক QR</button>
+<button id="b2" class="modeBtn" onclick="setM('pay')" style="background:#1e293b;color:#fff">💰 টাকা নেওয়ার QR</button>
+</div>
+<div id="linkBox">
+<div id="yellowBlock" class="cta-box">
+<div class="cta-icon">👇</div>
+<div class="cta-text">যে কোনো লিঙ্ক এখানে লিখুন / পেস্ট করুন<span>যেমন: Facebook, YouTube, আপনার দোকানের লিঙ্ক</span></div>
+</div>
+<input id="t" type="text" value="https://kobita.bhaskardigitalstudio.in">
+</div>
+<div id="payBox" style="display:none;text-align:left;background:#0f172a;padding:12px;border-radius:12px">
+<label style="font-size:13px;color:#38bdf8;font-weight:bold">💳 ব্যাঙ্ক বেছে নিন (ID সুরক্ষিত 🔒):</label>
+<select id="upi" onchange="make()"><option value="axis">Axis Bank - Main (Secure)</option><option value="icici">ICICI Bank (Secure)</option><option value="hdfc">HDFC Bank (Secure)</option></select>
+<label style="font-size:13px;margin-top:8px;display:block">আপনার নাম:</label><input id="pname" value="Bhaskar Banik" oninput="make()">
+<label style="font-size:13px;margin-top:8px;display:block">টাকার পরিমাণ:</label><input id="amt" type="number" placeholder="যেমন 100" oninput="make()">
+<p style="font-size:11px;color:#22c55e;margin-top:6px">🔒 আপনার UPI ID সুরক্ষিত আছে</p>
+</div>
+<button class="btn" onclick="make()" style="background:linear-gradient(90deg,#00C853,#22c55e);color:#fff;font-size:16px;box-shadow:0 4px 15px rgba(34,197,94,0.4)">✨ QR কোড তৈরি করুন ✨</button>
+<div id="qr"></div>
+<p id="msg" style="font-size:12px;color:#facc15;min-height:18px;margin:8px 0"></p>
+<div class="print-grid">
+<button class="print-btn" onclick="downloadQR()" style="background:linear-gradient(90deg,#4A00E0,#8E2DE2)">⬇️ ডাউনলোড</button>
+<button class="print-btn" onclick="printQR()" style="background:linear-gradient(90deg,#FF6F00,#FFAB40)">🖨️ প্রিন্ট</button>
+<button class="print-btn" onclick="shareQR()" style="background:linear-gradient(90deg,#00C853,#64DD17)">📤 QR শেয়ার</button>
+</div>
+<div class="grid">
+<a class="a" style="background:#22c55e" href="tel:+919674131894">📞 কল 1</a>
+<a class="a" style="background:#22c55e" href="tel:+919433209439">📞 কল 2</a>
+<a class="a" style="background:#25D366" href="https://wa.me/919433209439">💬 WhatsApp</a>
+<a class="a" style="background:#f59e0b" href="mailto:banikbhaskar373@gmail.com">📧 Email</a>
+<a class="a" style="background:#38bdf8;color:#000" href="#" onclick="shareStudioLink();return false;">📤 শেয়ার</a>
+<a class="a" style="background:#ef4444" href="https://maps.app.goo.gl/dJrXf6unBqNAvzjR9?g_st=aw" target="_blank">📍 লোকেশন</a>
+</div>
+</div>
+</div>
+<script>
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('selectstart', e => { if(!e.target.matches('input,textarea,select')) e.preventDefault(); });
+document.addEventListener('copy', e => { if(!e.target.matches('input,textarea')) e.preventDefault(); });
+document.addEventListener('cut', e => { if(!e.target.matches('input,textarea')) e.preventDefault(); });
+document.addEventListener('dragstart', e => e.preventDefault());
+document.addEventListener('keydown', e => {
+  if(e.key === 'F12' || (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key.toUpperCase())) || (e.ctrlKey && ['U','S','P','A'].includes(e.key.toUpperCase()))){ e.preventDefault(); return false; }
+});
+function _d(s){ try{ return atob(s.split('').reverse().join('')); }catch(e){ return ''; } }
+const SECURE_UPI_MAP={
+  "axis": _d("=QHbhxGdoxWahxWY3x2bkBnbldmIs8SbvNmL0V2XyBnM"),
+  "icici": _d("=k2YiN3cl1WYjJ3b3x2bkBnbldmIs8SbvNmL0V2XyBnM"),
+  "hdfc": _d("=8Wah1Wamx2bkx2ZhN3cl1WYjJ3b3x2bkBnbldmIs8SbvNmL0V2XyBnM")
+};
+let mode='link';
+function setM(m){mode=m;document.getElementById('linkBox').style.display=m==='link'?'block':'none';document.getElementById('payBox').style.display=m==='pay'?'block':'none';document.getElementById('b1').style.background=m==='link'?'#38bdf8':'#1e293b';document.getElementById('b1').style.color=m==='link'?'#000':'#fff';document.getElementById('b2').style.background=m==='pay'?'#22c55e':'#1e293b';document.getElementById('b2').style.color=m==='pay'?'#000':'#fff';make();}
+function make(){let box=document.getElementById('qr');let txt='';let msg=document.getElementById('msg');if(mode==='link'){txt=document.getElementById('t').value.trim();msg.innerText=txt?'🔗 এই QR স্ক্যান করলে লিঙ্ক খুলবে':'';}else{let bankKey=document.getElementById('upi').value;let upi=SECURE_UPI_MAP[bankKey];let name=document.getElementById('pname').value.trim()||'Bhaskar Banik';let amt=document.getElementById('amt').value.trim();if(!upi){box.innerHTML="<span style='color:#fbbf24'>ব্যাঙ্ক বেছে নিন</span>";return;}txt=`upi://pay?pa=${upi}&pn=${encodeURIComponent(name)}&cu=INR`;if(amt) txt+=`&am=${amt}`;msg.innerText=amt?`💰 ₹${amt} পেমেন্ট QR`:'💰 টাকা পাঠানোর QR';}if(!txt) return;box.innerHTML='';new QRCode(box,{text:txt,width:240,height:240,colorDark:"#000000",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.H});}
+function getWhiteQR(){let c=document.querySelector('#qr canvas');if(!c) return null;let size=1000,border=120,temp=document.createElement('canvas');temp.width=size;temp.height=size;let ctx=temp.getContext('2d');ctx.fillStyle="#ffffff";ctx.fillRect(0,0,size,size);ctx.drawImage(c,border,border,size-border*2,size-border*2);return temp;}
+function downloadQR(){let wq=getWhiteQR();if(!wq){alert('আগে QR বানান');return;}let a=document.createElement('a');a.href=wq.toDataURL('image/png');a.download=(mode==='pay'?'Bhaskar-Payment-QR':'Bhaskar-Link-QR')+'-'+Date.now()+'.png';a.click();}
+function printQR(){let wq=getWhiteQR();if(!wq) return;let src=wq.toDataURL();let w=window.open('','','width=800,height=900');w.document.write('<html><body style="text-align:center;padding:30px"><h2>💛 ভাস্কর ডিজিটাল স্টুডিও 💛</h2><img src="'+src+'" style="width:450px;height:450px"><p>📍 লিলুয়া | 📞 9433209439</p></body></html>');w.document.close();w.focus();setTimeout(()=>w.print(),600);}
+function shareQR(){let wq=getWhiteQR();if(!wq){alert('আগে QR বানান');return;}wq.toBlob(function(blob){let file=new File([blob],"Bhaskar-QR.png",{type:"image/png"});if(navigator.canShare && navigator.canShare({files:[file]})){navigator.share({files:[file],title:'ভাস্কর ডিজিটাল QR',text:mode==='pay'?'Payment QR':'Link QR'}).catch(()=>{});}else{downloadQR();}},'image/png');}
+function shareStudioLink(){
+let studioLink = window.location.href;
+let shareText = "💛 ভাস্কর ডিজিটাল স্টুডিও 💛\n📍 লিলুয়া, হাওড়া\n" + studioLink;
+if(navigator.share){
+navigator.share({title:"ভাস্কর ডিজিটাল স্টুডিও", text:shareText, url:studioLink}).catch(()=>{});
+}else{
+navigator.clipboard.writeText(studioLink).then(()=>{
+alert("✅ লিঙ্ক কপি হয়েছে:\n" + studioLink);
+});
+}
+}
+const tInput=document.getElementById('t');const yellowBlock=document.getElementById('yellowBlock');
+function updateHighlight(){if(mode!=='link'){yellowBlock.classList.remove('active');return;} if(tInput.value.trim().length>3){yellowBlock.classList.add('active');} else {yellowBlock.classList.remove('active');}}
+tInput.addEventListener('input',()=>{updateHighlight();make();});
+tInput.addEventListener('focus',()=>yellowBlock.classList.add('active'));
+tInput.addEventListener('blur',updateHighlight);
+window.addEventListener('load',()=>{make(); yellowBlock.classList.add('active'); setTimeout(()=>{updateHighlight();},3000);});
+</script>
+</body>
+</html>
