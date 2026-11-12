@@ -30,9 +30,10 @@ input,select{width:100%;padding:12px;border-radius:10px;border:0;margin:6px 0;bo
 .cta-text{font-size:14px;line-height:1.3;font-weight:800}
 .cta-text span{font-size:12px;font-weight:600;opacity:0.7;display:block;margin-top:3px}
 #linkBox input{width:100%!important;background:#ffffff!important;border:2px solid #000!important;border-radius:12px!important;padding:13px 14px!important;font-weight:600!important;font-size:14px!important;color:#000!important;margin:0!important}
-.poetry-btn,.blogger-btn{padding:14px;border-radius:12px;margin:12px 0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-decoration:none;font-weight:bold;font-size:18px;min-height:74px;box-sizing:border-box;line-height:1.25}
+.poetry-btn,.blogger-btn,.whatsapp-btn{padding:14px 10px;border-radius:12px;margin:12px 0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-decoration:none;font-weight:700;font-size:18px;min-height:74px;box-sizing:border-box;line-height:1.25;width:100%;box-shadow:0 4px 12px rgba(0,0,0,0.2)}
 .poetry-btn{background:linear-gradient(90deg,#ec4899,#8b5cf6)}
 .blogger-btn{background:linear-gradient(90deg,#06b6d4,#3b82f6)}
+.whatsapp-btn{background:#25D366}
 .print-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:14px 0}
 .print-btn{min-height:48px;padding:12px;border-radius:10px;border:0;font-weight:800;cursor:pointer;font-size:13px;color:#fff;display:flex;align-items:center;justify-content:center;box-sizing:border-box}
 .modeBtn{padding:11px;border-radius:10px;border:0;font-weight:bold;cursor:pointer;width:100%;font-size:14px;min-height:46px}
@@ -65,7 +66,7 @@ input,select{width:100%;padding:12px;border-radius:10px;border:0;margin:6px 0;bo
 <h2 style="font-size:16px">🙏প্রিয় ডিজিটাল জগতে আপনাকে সুস্বাগতম🙏</h2>
 <a class="poetry-btn" href="https://kobita.bhaskardigitalstudio.in" target="_blank">💛 চেতনার আধারে 💛<span style="font-size:16px;margin-top:2px">কবিতা📚পরিক্রমা</span></a>
 <a class="blogger-btn" href="https://chetonaradhar373.blogspot.com" target="_blank">বিবস্বানের কবিতা ব্লগার<br><span style="font-size:15px;color:#facc15">chetonaradhar373 ♥️</span></a>
-<a href="https://whatsapp.com/channel/0029Vb9EcLw0bIderthj0y0U" target="_blank" style="display:flex;align-items:center;justify-content:center;text-align:center;background:#25D366;color:#fff!important;padding:14px 10px;border-radius:12px;font-weight:700;font-size:15px;text-decoration:none;margin:12px 10px;box-shadow:0 4px 12px rgba(0,0,0,0.2);line-height:1.4;min-height:58px">WhatsApp চ্যানেল Follow করুন</a>
+<a class="whatsapp-btn" href="https://whatsapp.com/channel/0029Vb9EcLw0bIderthj0y0U" target="_blank">WhatsApp চ্যানেল Follow করুন</a>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:15px 0">
 <button id="b1" class="modeBtn" onclick="setM('link')" style="background:#38bdf8;color:#000">🔗 লিঙ্ক QR</button>
 <button id="b2" class="modeBtn" onclick="setM('pay')" style="background:#1e293b;color:#fff">💰 টাকা নেওয়ার QR</button>
@@ -167,4 +168,4 @@ tInput.addEventListener('blur',updateHighlight);
 window.addEventListener('load',()=>{make(); yellowBlock.classList.add('active'); setTimeout(()=>{updateHighlight();},3000);});
 </script>
 </body>
-</html>
+    </html>
