@@ -80,7 +80,7 @@ input,select{width:100%;padding:12px;border-radius:10px;border:0;margin:6px 0;bo
 </div>
 <div id="payBox" style="display:none;text-align:left;background:#0f172a;padding:12px;border-radius:12px">
 <label style="font-size:13px;color:#38bdf8;font-weight:bold">💳 ব্যাঙ্ক বেছে নিন (ID সুরক্ষিত 🔒):</label>
-<select id="upi" onchange="make()"><option value="sbi">SBI Bank - Main (Secure)</option></select>
+<select id="upi" onchange="make()"><option value="sbi">SBI Bank - Main (Secure)</option><option value="icici">ICICI Bank (Secure)</option><option value="axis">Axis Bank (Secure)</option><option value="hdfc">HDFC Bank (Secure)</option></select>
 <label style="font-size:13px;margin-top:8px;display:block">আপনার নাম:</label><input id="pname" value="Bhaskar Banik" oninput="make()">
 <label style="font-size:13px;margin-top:8px;display:block">টাকার পরিমাণ:</label><input id="amt" type="number" placeholder="যেমন 100" oninput="make()">
 <p style="font-size:11px;color:#22c55e;margin-top:6px">🔒 আপনার UPI ID সুরক্ষিত আছে</p>
@@ -138,7 +138,10 @@ document.addEventListener('keydown', e => {
 });
 function _d(s){ try{ return atob(s.split('').reverse().join('')); }catch(e){ return ''; } }
 const SECURE_UPI_MAP={
-  "sbi": _d("=kmYzt2bAFTLzczMyF2azFGaitWauFmY")
+  "sbi": _d("=kmYzt2bAFTLzczMyF2azFGaitWauFmY"),
+  "icici": _d("=k2YpNWar9GQzczMyF2azFGaitWauFmY"),
+  "axis": _d("==wcphXYr9GQzczMyF2azFGaitWauFmY"),
+  "hdfc": _d("=smbhJ2YmRGar9GQzczMyF2azFGaitWauFmY")
 };
 let mode='link';
 function setM(m){mode=m;document.getElementById('linkBox').style.display=m==='link'?'block':'none';document.getElementById('payBox').style.display=m==='pay'?'block':'none';document.getElementById('b1').style.background=m==='link'?'#38bdf8':'#1e293b';document.getElementById('b1').style.color=m==='link'?'#000':'#fff';document.getElementById('b2').style.background=m==='pay'?'#22c55e':'#1e293b';document.getElementById('b2').style.color=m==='pay'?'#000':'#fff';make();}
